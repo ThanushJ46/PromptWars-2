@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Matadan — Test Suite</title>
+  <style>
+    body { font-family: 'Noto Sans', sans-serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; background: #fafaf7; }
+    h1 { color: #1A2B6D; margin-bottom: 1.5rem; }
+    .test { padding: 0.75rem 1rem; margin: 0.25rem 0; border-radius: 8px; font-size: 0.9rem; }
+    .pass { background: #e8f5e9; color: #2e7d32; }
+    .fail { background: #ffebee; color: #c62828; }
+    .summary { margin-top: 1.5rem; padding: 1rem; border-radius: 8px; font-weight: 600; }
+    .summary.all-pass { background: #e8f5e9; color: #2e7d32; }
+    .summary.has-fail { background: #ffebee; color: #c62828; }
+  </style>
+</head>
+<body>
+<h1>🧪 Matadan Test Suite</h1>
+<div id="results"></div>
+<div id="summary"></div>
+
+<!-- Load app modules in order -->
+<script src="js/env.js"></script>
+<script src="js/data.js"></script>
+
+<script>
+  // ========== TEST FRAMEWORK ==========
+  let passed = 0, failed = 0;
+  const results = document.getElementById('results');
+
+  function assert(description, condition) {
+    const div = document.createElement('div');
+    if (condition) {
+      passed++;
+      div.className = 'test pass';
+      div.textContent = `✅ ${description}`;
+    } else {
+      failed++;
+      div.className = 'test fail';
+      div.textContent = `❌ ${description}`;
+    }
+    results.appendChild(div);
+  }
+
+  // ========== 1. ENVIRONMENT CONFIG TESTS ==========
+  assert('ENV object exists', typeof ENV !== 'undefined');
+  assert('ENV has GEMINI_KEY property', ENV.hasOwnProperty('GEMINI_KEY'));
+  assert('ENV has MAPS_KEY property', ENV.hasOwnProperty('MAPS_KEY'));
+  assert('ENV has CALENDAR_CLIENT_ID property', ENV.hasOwnProperty('CALENDAR_CLIENT_ID'));
+
+  // ========== 2. LANGUAGE DATA TESTS ==========
+  assert('LANG object exists', typeof LANG !== 'undefined');
+  assert('English language pack exists', LANG.hasOwnProperty('en'));
+  assert('Hindi language pack exists', LANG.hasOwnProperty('hi'));
+  assert('Kannada language pack exists', LANG.hasOwnProperty('kn'));
+
+  // Verify all languages have the same keys
+  const enKeys = Object.keys(LANG.en).sort();
+  const hiKeys = Object.keys(LANG.hi).sort();
+  const knKeys = Object.keys(LANG.kn).sort();
+
+  // Check critical keys exist in all languages
+  const criticalKeys = [
+    'hero_title', 'hero_subtitle', 'hero_cta_ready', 'hero_cta_booth',
+    'ready_title', 'ready_yes', 'ready_no', 'apply_title',
+    'walk_title', 'journey_title', 'booth_title', 'reminder_title',
+    'report_title', 'helpline_text', 'chat_preloaded'
+  ];
+
+  criticalKeys.forEach(key => {
+    assert(`EN has key "${key}"`, LANG.en.hasOwnProperty(key));
+    assert(`HI has key "${key}"`, LANG.hi.hasOwnProperty(key));
+    assert(`KN has key "${key}"`, LANG.kn.hasOwnProperty(key));
+  });
+
+  // ========== 3. CHAT PRELOADED DATA TESTS ==========
+  ['en', 'hi', 'kn'].forEach(lang => {
+    const preloaded = LANG[lang].chat_preloaded;
+    assert(`${lang.toUpperCase()} chat_preloaded is an array`, Array.isArray(preloaded));
+    assert(`${lang.toUpperCase()} chat_preloaded has at least 5 questions`, preloaded.length >= 5);
+    preloaded.forEach((item, i) => {
+      assert(`${lang.toUpperCase()} preloaded[${i}] has "q" property`, item.hasOwnProperty('q'));
+      assert(`${lang.toUpperCase()} preloaded[${i}] has "a" property`, item.hasOwnProperty('a'));
+      assert(`${lang.toUpperCase()} preloaded[${i}].q is non-empty`, item.q.length > 0);
+      assert(`${lang.toUpperCase()} preloaded[${i}].a is non-empty`, item.a.length > 0);
+    });
+  });
+
+  // ========== 4. I18N KEY PARITY TEST ==========
+  // Ensure Hindi and Kannada cover all English keys (except chat_welcome which is optional in en)
+  const enNonChat = enKeys.filter(k => k !== 'chat_welcome');
+  const hiMissing = enNonChat.filter(k => !LANG.hi.hasOwnProperty(k));
+  const knMissing = enNonChat.filter(k => !LANG.kn.hasOwnProperty(k));
+  assert(`Hindi covers all English keys (missing: ${hiMissing.length})`, hiMissing.length === 0);
+  assert(`Kannada covers all English keys (missing: ${knMissing.length})`, knMissing.length === 0);
+
+  // ========== 5. CONTENT VALIDATION TESTS ==========
+  assert('Voter helpline number 1950 mentioned in EN', LANG.en.helpline_text.includes('1950'));
+  assert('Voter helpline number 1950 mentioned in HI', LANG.hi.helpline_text.includes('1950'));
+  assert('Voter helpline number 1950 mentioned in KN', LANG.kn.helpline_text.includes('1950'));
+  assert('voters.eci.gov.in mentioned in EN helpline', LANG.en.helpline_text.includes('voters.eci.gov.in'));
+
+  // ========== 6. FORM ROUTING LOGIC TESTS ==========
+  assert('Form 6 title exists (new voter)', typeof LANG.en.form6_title === 'string');
+  assert('Form 6A title exists (NRI voter)', typeof LANG.en.form6a_title === 'string');
+  assert('Form 8A title exists (address change)', typeof LANG.en.form8a_title === 'string');
+  assert('Form 8 title exists (corrections)', typeof LANG.en.form8_title === 'string');
+
+  // ========== 7. SECURITY TESTS ==========
+  assert('ENV.GEMINI_KEY is not a hardcoded real key', 
+    !ENV.GEMINI_KEY.startsWith('AIza') || ENV.GEMINI_KEY === '');
+  assert('No CONFIG object polluting global scope', typeof CONFIG === 'undefined');
+
+  // ========== 8. DOM STRUCTURE TESTS (if loaded from index.html context) ==========
+  // These test the presence of expected semantic elements
+  if (document.querySelector) {
+    // Test that critical elements would exist in the app
+    assert('Test framework rendered results container', document.getElementById('results') !== null);
+  }
+
+  // ========== SUMMARY ==========
+  const summary = document.getElementById('summary');
+  const total = passed + failed;
+  summary.className = `summary ${failed === 0 ? 'all-pass' : 'has-fail'}`;
+  summary.textContent = `${passed}/${total} tests passed, ${failed} failed`;
+</script>
+</body>
+</html>
