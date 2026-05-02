@@ -75,7 +75,8 @@ When the user switches language (EN / HI / KN):
 
 | Feature | Why It Exists | Powered By |
 |---------|--------------|------------|
-| 🤖 **Matadan AI Chatbot** | Voters have questions at odd hours — they need instant answers, not a helpline queue. Falls back to preloaded Q&A when offline because internet isn't guaranteed in every village. | Google Gemini 2.0 Flash |
+| 📲 **100% Offline PWA** | Internet isn't guaranteed in rural areas. The app installs to the home screen and works completely offline. | Service Workers / PWA |
+| 🤖 **Offline-Aware AI Chatbot** | Voters need instant answers. Uses Gemini when online, but automatically intercepts network failures to fall back to a rich offline Q&A engine. | Gemini 2.0 Flash / Custom Fallback |
 | ✅ **Am I Ready?** | Most voters don't know if they're prepared. A simple YES/NO flow with 12 alternate documents removes anxiety before election day. | Built-in logic |
 | 📋 **Smart Form Router** | India has 4 different voter forms — most people fill the wrong one. The app asks your situation and routes you to the correct form automatically. | Built-in logic |
 | 🗺️ **Booth Locator** | "Where do I vote?" is the #1 question on election day. GPS + pincode search gives an instant answer. | Google Maps JS API |
