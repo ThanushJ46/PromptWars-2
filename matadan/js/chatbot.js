@@ -146,13 +146,14 @@ async function sendChatMessage() {
   showTyping();
   
   try {
-      if (!ENV.GEMINI_KEY || ENV.GEMINI_KEY === 'YOUR_GEMINI_API_KEY') {
-          // Fallback if API key not set - use preloaded data search
+      // Check if offline first — skip API call entirely
+      if (!navigator.onLine || !ENV.GEMINI_KEY || ENV.GEMINI_KEY === 'YOUR_GEMINI_API_KEY') {
           setTimeout(() => {
               hideTyping();
               const response = getFallbackResponse(text);
               appendMessage('bot', response);
-          }, 1000);
+              geminiHistory.push({ role: "model", parts: [{ text: response }] });
+          }, 800); // Small delay to feel natural
           return;
       }
       
@@ -197,43 +198,50 @@ async function sendChatMessage() {
  * @returns {string} A helpful response or redirect to helpline.
  */
 function getFallbackResponse(query) {
-    const q = query.toLowerCase().trim();
+    const q = query.toLowerCase();
     const langData = LANG[currentLang] || LANG['en'];
     const data = langData.chat_preloaded;
-    
-    if (!data || !Array.isArray(data)) {
-        return "I'm currently running in offline mode. Please try the preloaded questions below.";
-    }
-    
-    // 1. Exact match first (handles preloaded button clicks)
-    for (let item of data) {
-        if (item.q.toLowerCase().trim() === q) {
-            return item.a;
+
+    // Try preloaded data first
+    if (data && Array.isArray(data)) {
+        for (let item of data) {
+            const keywords = item.q.toLowerCase().split(' ').filter(w => w.length > 3);
+            if (keywords.some(kw => q.includes(kw))) {
+                return item.a;
+            }
         }
     }
-    
-    // 2. Score-based matching — pick the answer with the most keyword hits
-    let bestMatch = null;
-    let bestScore = 0;
-    
-    for (let item of data) {
-        const keywords = item.q.toLowerCase().split(/[\s—,?]+/).filter(w => w.length > 3);
-        const score = keywords.filter(kw => q.includes(kw)).length;
-        if (score > bestScore) {
-            bestScore = score;
-            bestMatch = item.a;
-        }
+
+    // Extended keyword matching for common queries
+    if (q.includes('form 6') || (q.includes('new') && q.includes('voter'))) {
+        return "**Form 6** is for first-time Indian voters (18+). Fill it at **voters.eci.gov.in**. You need: Age proof + Address proof + Photo. It's completely free and takes 10-15 minutes online.";
     }
-    
-    if (bestMatch && bestScore > 0) {
-        return bestMatch;
+    if (q.includes('nri') || q.includes('abroad') || q.includes('form 6a')) {
+        return "**NRI voters** use **Form 6A**. You need a valid Indian Passport. Fill it at voters.eci.gov.in. You can vote at your Indian constituency when you visit India.";
     }
-    
+    if (q.includes('document') || q.includes('id') || q.includes('bring')) {
+        return "**At the polling booth, bring any ONE of these:**\n✅ Voter ID (EPIC)\n✅ Aadhaar Card\n✅ Passport\n✅ Driving License\n✅ PAN Card\n✅ MNREGA Job Card\n✅ Bank Passbook with Photo\n\nTotal: 12 ECI-approved documents accepted.";
+    }
+    if (q.includes('booth') || q.includes('polling') || q.includes('station')) {
+        return "**Find your polling booth:**\n🌐 Visit electoralsearch.eci.gov.in\n📞 Call 1950 (free helpline)\n📱 Use the 'Find My Booth' section in this app\n\nYour booth is assigned based on your registered address.";
+    }
+    if (q.includes('evm') || q.includes('machine') || (q.includes('vote') && q.includes('how'))) {
+        return "**How to vote on EVM:**\n1️⃣ Enter the booth and give your name\n2️⃣ Get ink on your left index finger\n3️⃣ Press the blue button next to your candidate\n4️⃣ Hear a beep = vote confirmed ✅\n5️⃣ VVPAT shows paper slip for 7 seconds\n\nNOTA is always the last button if you want to reject all candidates.";
+    }
+    if (q.includes('nota')) {
+        return "**NOTA (None of the Above)** is the last button on every EVM. Introduced by Supreme Court in 2013. Your vote still counts as democratic participation. It cannot directly cause re-election but sends a strong message.";
+    }
+    if (q.includes('1950') || q.includes('helpline') || q.includes('help')) {
+        return "**Voter Helpline: 1950** (free call, multilingual, 24/7 during elections)\n\nFor violations: Use **cVIGIL app** — upload evidence, officials respond within 100 minutes.";
+    }
+    if (q.includes('hostel') || q.includes('student') || q.includes('another city')) {
+        return "**Students in hostels:** You can register at your hostel address (Form 6) OR your home address. You can only vote where you are registered. Cannot vote in both places. Choose whichever is easier to reach on election day.";
+    }
     if (q.includes('hello') || q.includes('hi') || q.includes('namaste')) {
-        return "Namaste! I am Matadan AI. How can I help you with your election queries today?";
+        return "Namaste! I am Matadan AI 🤖\n\nI can help you with:\n📋 Voter registration & forms\n🪪 Documents needed to vote\n📍 Finding your polling booth\n🗳️ How the EVM works\n🚨 Reporting violations\n\nWhat would you like to know?";
     }
-    
-    return "Great question! For accurate information, please call the Voter Helpline at **1950** or visit **voters.eci.gov.in**. You can also try one of the preloaded questions below.";
+
+    return "**Great question!** For accurate and up-to-date information:\n📞 Call **1950** (free Voter Helpline)\n🌐 Visit **voters.eci.gov.in**\n\nYou can also try one of the preloaded questions below — they work fully offline! 👇";
 }
 
 /**
