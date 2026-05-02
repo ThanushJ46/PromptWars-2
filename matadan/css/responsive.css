@@ -12,8 +12,8 @@
 
   /* Move share FAB up on mobile to avoid tab bar */
   #shareFabWrapper {
-    bottom: 150px !important;
-    right: 16px !important;
+    bottom: 160px !important;
+    right: 24px !important;
   }
 
   /* Navbar: compact on mobile */
