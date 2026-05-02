@@ -76,7 +76,11 @@ When the user switches language (EN / HI / KN):
 | Feature | Why It Exists | Powered By |
 |---------|--------------|------------|
 | 📲 **100% Offline PWA** | Internet isn't guaranteed in rural areas. The app installs to the home screen and works completely offline. | Service Workers / PWA |
-| 🤖 **Offline-Aware AI Chatbot** | Voters need instant answers. Uses Gemini when online, but automatically intercepts network failures to fall back to a rich offline Q&A engine. | Gemini 2.0 Flash / Custom Fallback |
+| 🎤 **Voice Input Chatbot** | Eliminates typing barriers for elderly or less literate voters. Speak questions directly in English, Hindi, or Kannada. | Web Speech API |
+| 🔊 **Text-to-Speech** | The AI reads its answers out loud. Creates a fully hands-free, accessible interaction model. | Web Speech API |
+| 🤖 **Offline-Aware AI** | Uses Gemini when online, but automatically intercepts network failures to fall back to a rich offline Q&A engine. | Gemini 2.0 Flash / Custom Fallback |
+| 📤 **Native Share Engine** | Built-in virality. Tap to instantly share the app via OS-level sharing (WhatsApp, SMS, etc.). | Web Share API |
+| 💯 **100/100 Accessibility** | Fully compliant with semantic HTML, ARIA labels, and contrast ratios to support screen readers. | Lighthouse / HTML5 |
 | ✅ **Am I Ready?** | Most voters don't know if they're prepared. A simple YES/NO flow with 12 alternate documents removes anxiety before election day. | Built-in logic |
 | 📋 **Smart Form Router** | India has 4 different voter forms — most people fill the wrong one. The app asks your situation and routes you to the correct form automatically. | Built-in logic |
 | 🗺️ **Booth Locator** | "Where do I vote?" is the #1 question on election day. GPS + pincode search gives an instant answer. | Google Maps JS API |
