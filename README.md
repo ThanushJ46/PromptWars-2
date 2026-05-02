@@ -23,12 +23,13 @@ Millions of eligible Indian voters — especially first-time voters, NRIs, stude
 - Which form to fill (Form 6 vs 6A vs 8A vs 8)
 - What happens inside a polling booth (EVM, VVPAT)
 - How to report election code violations
+- Language and literacy barriers that prevent access to information
 
 ### Solution: "Bite → Snack → Meal" Information Architecture
 Instead of dumping all information at once, Matadan delivers context progressively:
 
 | Layer | What the user sees | Example |
-|-------|-------------------|---------|
+|-------|-------------------|---------| 
 | **Bite** | Stats bar — instant context | "96.8 Crore Voters · 543 Seats · Age 18+" |
 | **Snack** | Quick YES/NO decision | "Do you have your Voter ID?" → YES (ready!) / NO (12 alternate docs) |
 | **Meal** | Full walkthrough when needed | 5-step registration guide, EVM simulator, Election Day timeline |
@@ -50,12 +51,13 @@ User says "No, I don't have a Voter ID" →
       └── Form 8  → Correction in existing Voter ID
 ```
 
-### AI Chatbot with Graceful Degradation
+### AI Chatbot with Voice + Graceful Degradation
 ```
-User asks a question →
+User asks a question (typing OR speaking in EN/HI/KN) →
   ├── API key available? → Gemini 2.0 Flash (multi-turn, system-prompted)
   └── No API key / offline? → Keyword-match against preloaded Q&A in current language
   Always → Never returns "sorry, can't help" — provides helpline (1950) + official link
+  Bot replies → 🔊 "Listen" button reads the answer aloud in the correct language
 ```
 
 The chatbot maintains **conversation history** for multi-turn context, and its system prompt constrains it to election-related topics only.
@@ -64,7 +66,8 @@ The chatbot maintains **conversation history** for multi-turn context, and its s
 When the user switches language (EN / HI / KN):
 - All UI text re-renders instantly (no page reload)
 - Chatbot preloaded questions switch to the selected language
-- Chat popup label updates to the correct language
+- Voice recognition switches to the correct language code (`en-IN`, `hi-IN`, `kn-IN`)
+- Text-to-Speech reads answers in the selected language
 - `<html lang>` attribute updates for screen readers
 
 ---
@@ -76,11 +79,11 @@ When the user switches language (EN / HI / KN):
 | Feature | Why It Exists | Powered By |
 |---------|--------------|------------|
 | 📲 **100% Offline PWA** | Internet isn't guaranteed in rural areas. The app installs to the home screen and works completely offline. | Service Workers / PWA |
-| 🎤 **Voice Input Chatbot** | Eliminates typing barriers for elderly or less literate voters. Speak questions directly in English, Hindi, or Kannada. | Web Speech API |
-| 🔊 **Text-to-Speech** | The AI reads its answers out loud. Creates a fully hands-free, accessible interaction model. | Web Speech API |
+| 🎤 **Voice Input Chatbot** | Eliminates typing barriers for elderly or less literate voters. Speak questions directly in English, Hindi, or Kannada — mic auto-detects the active language. | Web Speech API (SpeechRecognition) |
+| 🔊 **Text-to-Speech Answers** | The AI reads every answer aloud. A fully hands-free, audio-based assistant for users with low literacy. | Web Speech API (SpeechSynthesis) |
 | 🤖 **Offline-Aware AI** | Uses Gemini when online, but automatically intercepts network failures to fall back to a rich offline Q&A engine. | Gemini 2.0 Flash / Custom Fallback |
-| 📤 **Native Share Engine** | Built-in virality. Tap to instantly share the app via OS-level sharing (WhatsApp, SMS, etc.). | Web Share API |
-| 💯 **100/100 Accessibility** | Fully compliant with semantic HTML, ARIA labels, and contrast ratios to support screen readers. | Lighthouse / HTML5 |
+| 📤 **Native Share Engine** | Built-in virality via native OS sharing. Voters share the app with their family via WhatsApp, SMS, etc. | Web Share API |
+| 💯 **100/100 Accessibility** | Full ARIA labels, semantic roles, decorative emoji hidden from screen readers, skip-to-content link. | Lighthouse / HTML5 ARIA |
 | ✅ **Am I Ready?** | Most voters don't know if they're prepared. A simple YES/NO flow with 12 alternate documents removes anxiety before election day. | Built-in logic |
 | 📋 **Smart Form Router** | India has 4 different voter forms — most people fill the wrong one. The app asks your situation and routes you to the correct form automatically. | Built-in logic |
 | 🗺️ **Booth Locator** | "Where do I vote?" is the #1 question on election day. GPS + pincode search gives an instant answer. | Google Maps JS API |
@@ -95,6 +98,7 @@ When the user switches language (EN / HI / KN):
 
 - **Built with Google Stitch** — Used Gemini to generate precise design prompts for Stitch, creating a clean, professional UI that stands out from typical AI-generated interfaces
 - **Designed for rural first-time voters** — No information overload, no clutter. Just what you need, when you need it
+- **Voice-First** — Tap the mic, speak in your language, get an answer read aloud. No literacy required to use the chatbot
 - **Mobile-first** — Bottom tab navigation, touch-optimized cards, because most Indian voters use phones, not laptops
 - **SVG icons over emoji** — Consistent rendering across all devices and platforms
 
@@ -117,6 +121,9 @@ More → Reminder + Report Violation + cVIGIL + Helpline 1950
 |-------|-----------|
 | Frontend | Vanilla HTML5, CSS3, ES6+ JavaScript (zero-build) |
 | AI | Google Gemini 2.0 Flash API |
+| Voice Input | Web Speech API — SpeechRecognition (EN/HI/KN) |
+| Text-to-Speech | Web Speech API — SpeechSynthesis (EN/HI/KN) |
+| Sharing | Web Share API with WhatsApp fallback |
 | Maps | Google Maps JavaScript API |
 | Calendar | Google Calendar API |
 | Fonts | Google Fonts (Noto Sans family — trilingual) |
@@ -131,20 +138,23 @@ More → Reminder + Report Violation + cVIGIL + Helpline 1950
 matadan/
 ├── index.html              # Main SPA entry point
 ├── tests.html              # In-browser test suite (80+ assertions)
+├── manifest.json           # PWA manifest (install to home screen)
+├── sw.js                   # Service Worker — offline caching & AI fallback
 ├── Dockerfile              # nginx container for Cloud Run
 ├── docker-entrypoint.sh    # Runtime ENV injection script
 ├── nginx.conf              # Production nginx with security headers
 ├── css/
 │   ├── main.css            # Design tokens, typography, base styles
-│   ├── components.css      # All UI components (cards, tabs, chatbot, stepper)
+│   ├── components.css      # All UI components (cards, tabs, chatbot, voice UI)
 │   ├── animations.css      # Scroll animations, transitions
 │   └── responsive.css      # Mobile-first responsive breakpoints
 └── js/
-    ├── app.js              # Page router, language switcher, form accordion, stepper
-    ├── chatbot.js          # Gemini AI integration, popup logic, offline fallback
+    ├── app.js              # Page router, language switcher, form accordion, share
+    ├── chatbot.js          # Gemini AI + Voice Input + Text-to-Speech + offline fallback
     ├── data.js             # Trilingual content strings (EN / HI / KN)
     ├── maps.js             # Google Maps booth locator integration
     ├── reminder.js         # Google Calendar + native reminder
+    ├── pwa.js              # PWA install prompt handler
     └── env.js              # Environment config (overwritten at runtime in Cloud Run)
 ```
 
@@ -153,7 +163,7 @@ matadan/
 ## 🌐 Google Services Integration
 
 | # | Service | How It's Used |
-|---|---------|--------------|
+|---|---------|--------------| 
 | 1 | **Gemini 2.0 Flash** | Powers the AI chatbot with system prompt + multi-turn conversation history |
 | 2 | **Google Maps JS API** | Polling booth locator with geolocation, custom map styling, and marker placement |
 | 3 | **Google Calendar** | One-click "Add to Calendar" for election day reminders |
@@ -169,20 +179,25 @@ matadan/
 3. The Gemini API key is provided via environment variables — the app gracefully falls back to preloaded Q&A if missing
 4. Google Maps booth data uses geolocation + simulated offset — production would use ECI's official booth database
 5. The app is intentionally kept as a **zero-build vanilla web app** for maximum accessibility, portability, and minimum setup
+6. **Voice Input** requires Chrome/Edge (browsers with Web Speech API support); the app gracefully detects and informs the user on unsupported browsers
+7. **Microphone permission** must be granted by the user — the app handles denial gracefully with a helpful toast message
 
 ---
 
 ## ♿ Accessibility
 
 - Semantic HTML5 (`<nav>`, `<section>`, `<button>`) with proper heading hierarchy
-- `aria-label` on all interactive elements
+- `aria-label` on **all** interactive elements (mic button, send button, nav tabs, CTAs)
+- `role="main"` on home section, `role="region"` on stats bar
 - `aria-live="polite"` on chat messages (screen readers announce new messages)
+- `aria-hidden="true"` on all decorative emoji icons
 - Skip-to-content link for keyboard users
 - Focus-visible styling (`outline: 2px solid saffron`)
 - `.sr-only` class for screen-reader-only text
 - High-contrast color palette (saffron/navy/white)
 - Minimum 14px font across all breakpoints
 - SVG icons in navigation (no emoji — consistent cross-platform rendering)
+- `<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">` for correct encoding
 
 ---
 
@@ -236,6 +251,18 @@ gcloud run deploy matadan \
   --allow-unauthenticated \
   --set-env-vars="GEMINI_KEY=YOUR_KEY,MAPS_KEY=YOUR_KEY"
 ```
+
+---
+
+## 🏆 What Makes This Submission Stand Out
+
+| Dimension | What We Did |
+|-----------|-------------|
+| **Accessibility** | Voice Input + TTS = Fully usable without typing or reading. No app in this vertical does this. |
+| **Offline-First** | PWA with Service Worker caches everything. Works in 2G/no-signal zones across rural India. |
+| **Intelligence** | Gemini-powered context-aware chatbot that never says "I don't know" — it always provides a fallback. |
+| **Virality** | Native Web Share API turns every user into a distributor of the app. |
+| **Depth** | 7+ pages, interactive simulators, GPS booth locator, calendar reminders — not a demo, a real product. |
 
 ---
 
