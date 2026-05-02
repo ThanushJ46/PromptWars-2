@@ -10,6 +10,12 @@
   /* Adjust padding for mobile tabs */
   body { padding-bottom: 72px; }
 
+  /* Move share FAB up on mobile to avoid tab bar */
+  #shareFabWrapper {
+    bottom: 150px !important;
+    right: 16px !important;
+  }
+
   /* Navbar: compact on mobile */
   .navbar { padding: 0.75rem 1rem; }
   .nav-logo { font-size: 1.1rem; }

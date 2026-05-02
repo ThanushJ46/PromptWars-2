@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Matadan | India's Complete Election Education Platform</title>
-    <meta name="description" content="Matadan helps Indian voters register, find their polling booth, understand the EVM & VVPAT, and get answers via AI — in English, Hindi and Kannada.">
+    <meta name="description" content="Matadan helps Indian voters register, find their polling booth, understand the EVM & VVPAT, and get answers via AI â€” in English, Hindi and Kannada.">
     <meta name="keywords" content="India election, voter registration, EPIC card, EVM, VVPAT, polling booth, voter ID, Form 6, 1950 helpline">
-    <meta name="author" content="Matadan — Google Prompt Wars 2">
+    <meta name="author" content="Matadan â€” Google Prompt Wars 2">
     <meta name="theme-color" content="#1A2B6D">
 
     <!-- Open Graph / Social sharing -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Matadan | India's Election Education Platform">
-    <meta property="og:description" content="Your AI-powered guide to voting in India. Register, locate your booth, and learn about EVM & VVPAT — in 3 languages.">
+    <meta property="og:description" content="Your AI-powered guide to voting in India. Register, locate your booth, and learn about EVM & VVPAT â€” in 3 languages.">
     <meta property="og:url" content="https://matadan-175321574215.asia-south1.run.app">
 
     <!-- Performance: preconnect to external origins -->
@@ -47,28 +47,28 @@
 <!-- PWA Install Banner -->
 <div id="pwaInstallBanner" style="display:none;position:fixed;bottom:80px;left:0;right:0;z-index:2000;justify-content:center;padding:0 1rem;">
   <div style="background:var(--navy);color:white;padding:1rem 1.5rem;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,0.2);display:flex;align-items:center;gap:1rem;max-width:500px;width:100%;">
-    <span style="font-size:2rem;">🗳️</span>
+    <span style="font-size:2rem;">ðŸ—³ï¸</span>
     <div style="flex:1;">
       <div style="font-weight:700;font-size:0.95rem;">Install Matadan</div>
-      <div style="font-size:0.8rem;opacity:0.8;">Works offline — perfect for election day</div>
+      <div style="font-size:0.8rem;opacity:0.8;">Works offline â€” perfect for election day</div>
     </div>
     <button onclick="installPWA()" style="background:var(--saffron);color:white;border:none;padding:0.5rem 1rem;border-radius:8px;font-weight:700;cursor:pointer;font-size:0.85rem;">Install</button>
-    <button onclick="hidePWABanner()" style="background:rgba(255,255,255,0.15);color:white;border:none;padding:0.5rem;border-radius:8px;cursor:pointer;">✕</button>
+    <button onclick="hidePWABanner()" style="background:rgba(255,255,255,0.15);color:white;border:none;padding:0.5rem;border-radius:8px;cursor:pointer;">âœ•</button>
   </div>
 </div>
 
 <!-- Offline Banner -->
 <div id="offlineBanner" style="display:none;position:fixed;top:0;left:0;right:0;z-index:2001;justify-content:center;">
   <div style="background:#E65100;color:white;padding:0.6rem 1.5rem;font-size:0.85rem;font-weight:600;display:flex;align-items:center;gap:0.5rem;width:100%;justify-content:center;">
-    <span>📵</span>
-    <span>You're offline — AI chatbot using preloaded answers. All other features available.</span>
+    <span>ðŸ“µ</span>
+    <span>You're offline â€” AI chatbot using preloaded answers. All other features available.</span>
   </div>
 </div>
 
 <!-- NAVBAR -->
 <nav class="navbar" id="navbar">
   <div class="nav-logo">
-    <span style="font-size:1.8rem;">🗳️</span>
+    <span style="font-size:1.8rem;">ðŸ—³ï¸</span>
     MATADAN
   </div>
   <div class="nav-links">
@@ -82,13 +82,13 @@
   </div>
   <div class="lang-switcher">
     <button class="lang-btn ripple active" data-lang="en" onclick="setLanguage('en')">EN</button>
-    <button class="lang-btn ripple" data-lang="hi" onclick="setLanguage('hi')">हिं</button>
-    <button class="lang-btn ripple" data-lang="kn" onclick="setLanguage('kn')">ಕನ್ನಡ</button>
+    <button class="lang-btn ripple" data-lang="hi" onclick="setLanguage('hi')">à¤¹à¤¿à¤‚</button>
+    <button class="lang-btn ripple" data-lang="kn" onclick="setLanguage('kn')">à²•à²¨à³à²¨à²¡</button>
   </div>
 </nav>
 
 <!-- ===================== PAGE: HOME ===================== -->
-<div id="home" class="page-section">
+<div id="home" class="page-section" role="main" aria-label="Home page">
   <!-- Hero -->
   <div class="hero">
     <div class="ashoka-watermark"></div>
@@ -97,24 +97,24 @@
       <h1 data-i18n="hero_title">Your Vote. Your Power. Your India.</h1>
       <p data-i18n="hero_subtitle" style="font-size:1.1rem;opacity:0.9;margin-bottom:2rem;">India's most complete election education platform</p>
       <div class="hero-ctas">
-        <button class="btn-primary ripple" onclick="showPage('ready')" data-i18n="hero_cta_ready">Am I Ready to Vote? →</button>
-        <button class="btn-secondary ripple" onclick="showPage('booth')" data-i18n="hero_cta_booth" style="background:rgba(255,255,255,0.15);color:white;border:2px solid rgba(255,255,255,0.5);">Find My Booth →</button>
+        <button class="btn-primary ripple" onclick="showPage('ready')" data-i18n="hero_cta_ready" aria-label="Check if I am ready to vote">Am I Ready to Vote? â†’</button>
+        <button class="btn-secondary ripple" onclick="showPage('booth')" data-i18n="hero_cta_booth" style="background:rgba(255,255,255,0.15);color:white;border:2px solid rgba(255,255,255,0.5);" aria-label="Find my polling booth">Find My Booth â†’</button>
       </div>
     </div>
   </div>
 
   <!-- Stats Bar -->
-  <div class="stats-bar container">
+  <div class="stats-bar container" role="region" aria-label="Election statistics">
     <span>
-      <span class="stat-icon" style="font-size:2rem;">👥</span>
+      <span class="stat-icon" style="font-size:2rem;">ðŸ‘¥</span>
       <br><strong data-i18n="stats_voters">96.8 Crore Voters</strong>
     </span>
     <span>
-      <span class="stat-icon" style="font-size:2rem;">🏛️</span>
+      <span class="stat-icon" style="font-size:2rem;">ðŸ›ï¸</span>
       <br><strong data-i18n="stats_seats">543 Lok Sabha Seats</strong>
     </span>
     <span>
-      <span class="stat-icon" style="font-size:2rem;">✅</span>
+      <span class="stat-icon" style="font-size:2rem;">âœ…</span>
       <br><strong data-i18n="stats_age">Voting Age: 18+</strong>
     </span>
   </div>
@@ -124,26 +124,26 @@
     <h2 class="text-center mb-6" data-i18n="voters_code_title">The Voter's Oath</h2>
     <div class="cards-grid animate-stagger">
       <div class="code-card animate-on-scroll">
-        <div class="code-card-icon">🗳️</div>
+        <div class="code-card-icon">ðŸ—³ï¸</div>
         <h3 data-i18n="code_1_title">Your Vote is Sacred</h3>
         <p data-i18n="code_1_desc">Every single vote shapes the future of the nation. It is your fundamental right and duty under Article 326 of the Constitution.</p>
       </div>
       <div class="code-card animate-on-scroll">
-        <div class="code-card-icon">⚖️</div>
+        <div class="code-card-icon">âš–ï¸</div>
         <h3 data-i18n="code_2_title">Choose Wisely</h3>
         <p data-i18n="code_2_desc">Research your candidates. Check their track record and background.</p>
-        <a href="https://affidavit.eci.gov.in" target="_blank" style="font-size:0.8rem;color:var(--saffron);font-weight:600;margin-top:0.5rem;display:inline-block;">Check Candidate Affidavits →</a>
+        <a href="https://affidavit.eci.gov.in" target="_blank" style="font-size:0.8rem;color:var(--saffron);font-weight:600;margin-top:0.5rem;display:inline-block;">Check Candidate Affidavits â†’</a>
       </div>
       <div class="code-card animate-on-scroll">
-        <div class="code-card-icon">🚫</div>
+        <div class="code-card-icon">ðŸš«</div>
         <h3 data-i18n="code_3_title">Reject if Needed</h3>
         <p data-i18n="code_3_desc">NOTA (None of the Above) is your constitutional right to reject all candidates. It is the last button on the EVM.</p>
       </div>
       <div class="code-card animate-on-scroll">
-        <div class="code-card-icon">📢</div>
+        <div class="code-card-icon">ðŸ“¢</div>
         <h3 data-i18n="code_4_title">Report Wrongs</h3>
         <p data-i18n="code_4_desc">Stand against electoral malpractice. Report bribery or intimidation via cVIGIL app or call 1950.</p>
-        <a href="https://play.google.com/store/apps/details?id=in.nic.eci.cvigil" target="_blank" style="font-size:0.8rem;color:var(--saffron);font-weight:600;margin-top:0.5rem;display:inline-block;">Get cVIGIL App →</a>
+        <a href="https://play.google.com/store/apps/details?id=in.nic.eci.cvigil" target="_blank" style="font-size:0.8rem;color:var(--saffron);font-weight:600;margin-top:0.5rem;display:inline-block;">Get cVIGIL App â†’</a>
       </div>
     </div>
   </section>
@@ -153,32 +153,32 @@
     <h2 class="text-center mb-6">What would you like to do?</h2>
     <div class="cards-grid animate-stagger">
       <div class="nav-card animate-on-scroll" onclick="showPage('ready')">
-        <span style="font-size:2.5rem;">✅</span>
+        <span style="font-size:2.5rem;" aria-hidden="true">âœ…</span>
         <h3>Am I Ready to Vote?</h3>
         <p>Check if you have the right documents</p>
       </div>
       <div class="nav-card animate-on-scroll" onclick="showPage('apply')">
-        <span style="font-size:2.5rem;">📝</span>
+        <span style="font-size:2.5rem;" aria-hidden="true">ðŸ“</span>
         <h3>Apply for Voter ID</h3>
         <p>Find the right form for your situation</p>
       </div>
       <div class="nav-card animate-on-scroll" onclick="showPage('walkthrough')">
-        <span style="font-size:2.5rem;">👣</span>
+        <span style="font-size:2.5rem;" aria-hidden="true">ðŸ‘£</span>
         <h3>New Voter Guide</h3>
         <p>Step by step registration walkthrough</p>
       </div>
       <div class="nav-card animate-on-scroll" onclick="showPage('journey')">
-        <span style="font-size:2.5rem;">🗳️</span>
+        <span style="font-size:2.5rem;" aria-hidden="true">ðŸ—³ï¸</span>
         <h3>Election Day Journey</h3>
         <p>What happens at the polling booth</p>
       </div>
       <div class="nav-card animate-on-scroll" onclick="showPage('booth')">
-        <span style="font-size:2.5rem;">📍</span>
+        <span style="font-size:2.5rem;" aria-hidden="true">ðŸ“</span>
         <h3>Find My Booth</h3>
         <p>Locate your polling station</p>
       </div>
       <div class="nav-card animate-on-scroll" onclick="showPage('more')">
-        <span style="font-size:2.5rem;">🚨</span>
+        <span style="font-size:2.5rem;" aria-hidden="true">ðŸš¨</span>
         <h3>More Features</h3>
         <p>Reminder, Report violation, Helplines</p>
       </div>
@@ -186,8 +186,9 @@
   </section>
 
   <!-- Helpline Strip -->
-  <div class="helpline-strip">
-    📞 Voter Helpline: <strong>1950</strong> &nbsp;|&nbsp; 🌐 <a href="https://voters.eci.gov.in" target="_blank">voters.eci.gov.in</a> &nbsp;|&nbsp; 📱 cVIGIL App
+  <div class="helpline-strip" style="display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:1rem;">
+    <span>ðŸ“ž Voter Helpline: <strong>1950</strong> &nbsp;|&nbsp; ðŸŒ <a href="https://voters.eci.gov.in" target="_blank">voters.eci.gov.in</a> &nbsp;|&nbsp; ðŸ“± cVIGIL App</span>
+    <button onclick="shareMatadan()" aria-label="Share Matadan app" style="background:rgba(255,255,255,0.2);color:white;border:2px solid rgba(255,255,255,0.5);padding:0.4rem 1rem;border-radius:20px;font-weight:700;font-size:0.85rem;cursor:pointer;display:inline-flex;align-items:center;gap:0.4rem;">ðŸ“¤ Share Matadan</button>
   </div>
 </div>
 
@@ -200,11 +201,11 @@
     <!-- Step 1 -->
     <div id="ready-step1" style="max-width:600px;margin:0 auto;text-align:center;">
       <div class="card" style="padding:2.5rem;">
-        <span style="font-size:4rem;color:var(--navy);">🪪</span>
+        <span style="font-size:4rem;color:var(--navy);">ðŸªª</span>
         <h3 class="mb-6 mt-4" data-i18n="ready_q1">Do you have your Voter ID (EPIC card)?</h3>
         <div class="flex gap-4 justify-center">
-          <button class="btn-primary ripple" style="min-width:120px;" onclick="handleReadyYes()" data-i18n="ready_yes">YES ✅</button>
-          <button class="btn-secondary ripple" style="min-width:120px;border:2px solid var(--error);color:var(--error);" onclick="handleReadyNo()" data-i18n="ready_no">NO ❌</button>
+          <button class="btn-primary ripple" style="min-width:120px;" onclick="handleReadyYes()" data-i18n="ready_yes">YES âœ…</button>
+          <button class="btn-secondary ripple" style="min-width:120px;border:2px solid var(--error);color:var(--error);" onclick="handleReadyNo()" data-i18n="ready_no">NO âŒ</button>
         </div>
       </div>
     </div>
@@ -212,12 +213,12 @@
     <!-- Success -->
     <div id="ready-success" style="display:none;max-width:600px;margin:0 auto;text-align:center;">
       <div class="card" style="padding:2.5rem;border:2px solid var(--green);">
-        <span style="font-size:4rem;">✅</span>
-        <h3 class="mb-4 mt-4" style="color:var(--green);" data-i18n="ready_success_title">You're ready to vote! 🎉</h3>
+        <span style="font-size:4rem;">âœ…</span>
+        <h3 class="mb-4 mt-4" style="color:var(--green);" data-i18n="ready_success_title">You're ready to vote! ðŸŽ‰</h3>
         <p data-i18n="ready_success_desc">Your EPIC card is the primary document needed at the polling station.</p>
         <div class="flex gap-4 justify-center mt-6" style="flex-wrap:wrap;">
-          <button class="btn-primary ripple" onclick="showPage('booth')">📍 Find My Booth</button>
-          <button class="btn-secondary ripple" onclick="showPage('journey')">🗳️ Election Day Journey</button>
+          <button class="btn-primary ripple" onclick="showPage('booth')">ðŸ“ Find My Booth</button>
+          <button class="btn-secondary ripple" onclick="showPage('journey')">ðŸ—³ï¸ Election Day Journey</button>
         </div>
         <button onclick="resetReady()" style="margin-top:1rem;color:var(--text-secondary);font-size:0.85rem;text-decoration:underline;background:none;border:none;cursor:pointer;">Start Over</button>
       </div>
@@ -227,38 +228,38 @@
     <div id="ready-no-epic" style="display:none;max-width:700px;margin:0 auto;">
       <div class="card" style="padding:2rem;">
         <div class="text-center mb-4">
-          <span style="font-size:3rem;">ℹ️</span>
+          <span style="font-size:3rem;">â„¹ï¸</span>
           <h3 class="mt-2" data-i18n="ready_no_epic_title">Don't have an EPIC card?</h3>
           <p style="color:var(--text-secondary);" data-i18n="ready_no_epic_desc">You can still vote with any of these 12 ECI-approved alternate documents:</p>
         </div>
         <ul style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;list-style:none;padding:0;margin-bottom:1.5rem;">
-          <li class="flex items-center gap-2"><span style="color:var(--green);font-size:1.2rem;">✅</span>Aadhaar Card</li>
-          <li class="flex items-center gap-2"><span style="color:var(--green);font-size:1.2rem;">✅</span>Passport</li>
-          <li class="flex items-center gap-2"><span style="color:var(--green);font-size:1.2rem;">✅</span>Driving License</li>
-          <li class="flex items-center gap-2"><span style="color:var(--green);font-size:1.2rem;">✅</span>PAN Card</li>
-          <li class="flex items-center gap-2"><span style="color:var(--green);font-size:1.2rem;">✅</span>MNREGA Job Card</li>
-          <li class="flex items-center gap-2"><span style="color:var(--green);font-size:1.2rem;">✅</span>Bank Passbook with Photo</li>
-          <li class="flex items-center gap-2"><span style="color:var(--green);font-size:1.2rem;">✅</span>Health Insurance Smart Card</li>
-          <li class="flex items-center gap-2"><span style="color:var(--green);font-size:1.2rem;">✅</span>Pension Document with Photo</li>
-          <li class="flex items-center gap-2"><span style="color:var(--green);font-size:1.2rem;">✅</span>NPR Smart Card</li>
-          <li class="flex items-center gap-2"><span style="color:var(--green);font-size:1.2rem;">✅</span>Govt Employee ID Card</li>
-          <li class="flex items-center gap-2"><span style="color:var(--green);font-size:1.2rem;">✅</span>MP/MLA/MLC Identity Card</li>
-          <li class="flex items-center gap-2"><span style="color:var(--green);font-size:1.2rem;">✅</span>Official Identity Document</li>
+          <li class="flex items-center gap-2"><span style="color:var(--green);font-size:1.2rem;">âœ…</span>Aadhaar Card</li>
+          <li class="flex items-center gap-2"><span style="color:var(--green);font-size:1.2rem;">âœ…</span>Passport</li>
+          <li class="flex items-center gap-2"><span style="color:var(--green);font-size:1.2rem;">âœ…</span>Driving License</li>
+          <li class="flex items-center gap-2"><span style="color:var(--green);font-size:1.2rem;">âœ…</span>PAN Card</li>
+          <li class="flex items-center gap-2"><span style="color:var(--green);font-size:1.2rem;">âœ…</span>MNREGA Job Card</li>
+          <li class="flex items-center gap-2"><span style="color:var(--green);font-size:1.2rem;">âœ…</span>Bank Passbook with Photo</li>
+          <li class="flex items-center gap-2"><span style="color:var(--green);font-size:1.2rem;">âœ…</span>Health Insurance Smart Card</li>
+          <li class="flex items-center gap-2"><span style="color:var(--green);font-size:1.2rem;">âœ…</span>Pension Document with Photo</li>
+          <li class="flex items-center gap-2"><span style="color:var(--green);font-size:1.2rem;">âœ…</span>NPR Smart Card</li>
+          <li class="flex items-center gap-2"><span style="color:var(--green);font-size:1.2rem;">âœ…</span>Govt Employee ID Card</li>
+          <li class="flex items-center gap-2"><span style="color:var(--green);font-size:1.2rem;">âœ…</span>MP/MLA/MLC Identity Card</li>
+          <li class="flex items-center gap-2"><span style="color:var(--green);font-size:1.2rem;">âœ…</span>Official Identity Document</li>
         </ul>
         <div style="background:var(--bg);padding:1.25rem;border-radius:var(--radius-md);text-align:center;border:1px solid var(--saffron);margin-top:1rem;">
           <p style="font-weight:600;margin-bottom:0.75rem;">Don't have any of these documents? Apply for Voter ID:</p>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:1rem;">
             <button class="btn-primary ripple" style="font-size:0.8rem;padding:0.6rem;" onclick="showPage('apply');setTimeout(()=>{document.querySelectorAll('.form-card')[0].click()},300);">
-              🆕 New Indian Voter<br><span style="font-size:0.7rem;opacity:0.85;">(Form 6 — First time, 18+)</span>
+              ðŸ†• New Indian Voter<br><span style="font-size:0.7rem;opacity:0.85;">(Form 6 â€” First time, 18+)</span>
             </button>
             <button class="btn-secondary ripple" style="font-size:0.8rem;padding:0.6rem;border:2px solid var(--navy);" onclick="showPage('apply');setTimeout(()=>{document.querySelectorAll('.form-card')[1].click()},300);">
-              ✈️ NRI Voter<br><span style="font-size:0.7rem;opacity:0.75;">(Form 6A — Indian citizens abroad)</span>
+              âœˆï¸ NRI Voter<br><span style="font-size:0.7rem;opacity:0.75;">(Form 6A â€” Indian citizens abroad)</span>
             </button>
             <button class="btn-secondary ripple" style="font-size:0.8rem;padding:0.6rem;border:2px solid var(--green);" onclick="showPage('apply');setTimeout(()=>{document.querySelectorAll('.form-card')[2].click()},300);">
-              🏠 Changed Address<br><span style="font-size:0.7rem;opacity:0.75;">(Form 8A)</span>
+              ðŸ  Changed Address<br><span style="font-size:0.7rem;opacity:0.75;">(Form 8A)</span>
             </button>
             <button class="btn-secondary ripple" style="font-size:0.8rem;padding:0.6rem;border:2px solid #6A1B9A;" onclick="showPage('apply');">
-              ✏️ Fix My Details<br><span style="font-size:0.7rem;opacity:0.75;">(Form 8 — Corrections)</span>
+              âœï¸ Fix My Details<br><span style="font-size:0.7rem;opacity:0.75;">(Form 8 â€” Corrections)</span>
             </button>
           </div>
           <p style="font-size:0.8rem;color:var(--text-secondary);">Not sure which form?<br>Call <strong>1950</strong> or visit <a href="https://voters.eci.gov.in" target="_blank">voters.eci.gov.in</a></p>
@@ -278,86 +279,86 @@
       <!-- Form 6 -->
       <div class="form-card animate-on-scroll" onclick="toggleForm(this)" style="border-left:4px solid var(--saffron);">
         <div class="form-card-header">
-          <div class="form-card-icon">🆕</div>
+          <div class="form-card-icon">ðŸ†•</div>
           <div><h3 data-i18n="form6_title">New Voter (Indian Citizen, 18+)</h3><p style="color:var(--text-secondary);font-size:0.85rem;">First time registration</p></div>
           <div class="form-badge" style="background:var(--saffron);color:white;">Form 6</div>
-          <span class="expand-icon">▼</span>
+          <span class="expand-icon">â–¼</span>
         </div>
         <div class="form-card-content">
           <p style="font-weight:600;margin-bottom:0.5rem;">Documents needed:</p>
-          <ul><li>✓ Passport size photograph</li><li>✓ Proof of Age (Birth Certificate / 10th Marksheet)</li><li>✓ Proof of Residence (Aadhaar / Utility Bill)</li></ul>
-          <button class="btn-primary ripple" style="width:100%;margin-top:1rem;" onclick="window.open('https://voters.eci.gov.in/','_blank')" data-i18n="apply_btn">Apply Online at voters.eci.gov.in →</button>
+          <ul><li>âœ“ Passport size photograph</li><li>âœ“ Proof of Age (Birth Certificate / 10th Marksheet)</li><li>âœ“ Proof of Residence (Aadhaar / Utility Bill)</li></ul>
+          <button class="btn-primary ripple" style="width:100%;margin-top:1rem;" onclick="window.open('https://voters.eci.gov.in/','_blank')" data-i18n="apply_btn">Apply Online at voters.eci.gov.in â†’</button>
           <p style="font-size:0.8rem;color:var(--text-secondary);margin-top:0.5rem;text-align:center;">Helpline: <strong>1950</strong></p>
         </div>
       </div>
       <!-- Form 6A -->
       <div class="form-card animate-on-scroll" onclick="toggleForm(this)" style="border-left:4px solid var(--navy);">
         <div class="form-card-header">
-          <div class="form-card-icon">✈️</div>
+          <div class="form-card-icon">âœˆï¸</div>
           <div><h3 data-i18n="form6a_title">NRI Voter</h3><p style="color:var(--text-secondary);font-size:0.85rem;">Indian citizens living abroad</p></div>
           <div class="form-badge" style="background:var(--navy);color:white;">Form 6A</div>
-          <span class="expand-icon">▼</span>
+          <span class="expand-icon">â–¼</span>
         </div>
         <div class="form-card-content">
           <p style="font-weight:600;margin-bottom:0.5rem;">Documents needed:</p>
-          <ul><li>✓ Valid Indian Passport (mandatory)</li><li>✓ Overseas address proof</li><li>✓ Recent passport-size photo</li></ul>
-          <button class="btn-primary ripple" style="width:100%;margin-top:1rem;" onclick="window.open('https://voters.eci.gov.in/','_blank')" data-i18n="apply_btn">Apply Online at voters.eci.gov.in →</button>
+          <ul><li>âœ“ Valid Indian Passport (mandatory)</li><li>âœ“ Overseas address proof</li><li>âœ“ Recent passport-size photo</li></ul>
+          <button class="btn-primary ripple" style="width:100%;margin-top:1rem;" onclick="window.open('https://voters.eci.gov.in/','_blank')" data-i18n="apply_btn">Apply Online at voters.eci.gov.in â†’</button>
           <p style="font-size:0.8rem;color:var(--text-secondary);margin-top:0.5rem;text-align:center;">Helpline: <strong>1950</strong></p>
         </div>
       </div>
       <!-- Form 8A -->
       <div class="form-card animate-on-scroll" onclick="toggleForm(this)" style="border-left:4px solid var(--green);">
         <div class="form-card-header">
-          <div class="form-card-icon">🏠</div>
+          <div class="form-card-icon">ðŸ </div>
           <div><h3 data-i18n="form8a_title">Changed Address</h3><p style="color:var(--text-secondary);font-size:0.85rem;">Shifted within or outside constituency</p></div>
           <div class="form-badge" style="background:var(--green);color:white;">Form 8A</div>
-          <span class="expand-icon">▼</span>
+          <span class="expand-icon">â–¼</span>
         </div>
         <div class="form-card-content">
           <p style="font-weight:600;margin-bottom:0.5rem;">Documents needed:</p>
-          <ul><li>✓ Current EPIC card details</li><li>✓ New Address Proof (Aadhaar / Utility Bill)</li></ul>
-          <button class="btn-primary ripple" style="width:100%;margin-top:1rem;" onclick="window.open('https://voters.eci.gov.in/','_blank')" data-i18n="apply_btn">Apply Online at voters.eci.gov.in →</button>
+          <ul><li>âœ“ Current EPIC card details</li><li>âœ“ New Address Proof (Aadhaar / Utility Bill)</li></ul>
+          <button class="btn-primary ripple" style="width:100%;margin-top:1rem;" onclick="window.open('https://voters.eci.gov.in/','_blank')" data-i18n="apply_btn">Apply Online at voters.eci.gov.in â†’</button>
           <p style="font-size:0.8rem;color:var(--text-secondary);margin-top:0.5rem;text-align:center;">Helpline: <strong>1950</strong></p>
         </div>
       </div>
       <!-- Form 8 -->
       <div class="form-card animate-on-scroll" onclick="toggleForm(this)" style="border-left:4px solid #6A1B9A;">
         <div class="form-card-header">
-          <div class="form-card-icon">✏️</div>
+          <div class="form-card-icon">âœï¸</div>
           <div><h3 data-i18n="form8_title">Correction in Voter ID</h3><p style="color:var(--text-secondary);font-size:0.85rem;">Fix name, DOB, photo errors</p></div>
           <div class="form-badge" style="background:#6A1B9A;color:white;">Form 8</div>
-          <span class="expand-icon">▼</span>
+          <span class="expand-icon">â–¼</span>
         </div>
         <div class="form-card-content">
           <p style="font-weight:600;margin-bottom:0.5rem;">Documents needed:</p>
-          <ul><li>✓ Existing Voter ID</li><li>✓ Supporting document for correction</li></ul>
-          <button class="btn-primary ripple" style="width:100%;margin-top:1rem;" onclick="window.open('https://voters.eci.gov.in/','_blank')" data-i18n="apply_btn">Apply Online at voters.eci.gov.in →</button>
+          <ul><li>âœ“ Existing Voter ID</li><li>âœ“ Supporting document for correction</li></ul>
+          <button class="btn-primary ripple" style="width:100%;margin-top:1rem;" onclick="window.open('https://voters.eci.gov.in/','_blank')" data-i18n="apply_btn">Apply Online at voters.eci.gov.in â†’</button>
           <p style="font-size:0.8rem;color:var(--text-secondary);margin-top:0.5rem;text-align:center;">Helpline: <strong>1950</strong></p>
         </div>
       </div>
       <!-- Form 6B -->
       <div class="form-card animate-on-scroll" onclick="toggleForm(this)" style="border-left:4px solid #00695C;">
         <div class="form-card-header">
-          <div class="form-card-icon">🌍</div>
+          <div class="form-card-icon">ðŸŒ</div>
           <div><h3 data-i18n="form6b_title">Overseas Elector</h3><p style="color:var(--text-secondary);font-size:0.85rem;">Overseas Indian citizens</p></div>
           <div class="form-badge" style="background:#00695C;color:white;">Form 6B</div>
-          <span class="expand-icon">▼</span>
+          <span class="expand-icon">â–¼</span>
         </div>
         <div class="form-card-content">
           <p style="font-weight:600;margin-bottom:0.5rem;">Documents needed:</p>
-          <ul><li>✓ Indian Passport</li><li>✓ Declaration of overseas address</li><li>✓ Photo</li></ul>
-          <button class="btn-primary ripple" style="width:100%;margin-top:1rem;" onclick="window.open('https://voters.eci.gov.in/','_blank')" data-i18n="apply_btn">Apply Online at voters.eci.gov.in →</button>
+          <ul><li>âœ“ Indian Passport</li><li>âœ“ Declaration of overseas address</li><li>âœ“ Photo</li></ul>
+          <button class="btn-primary ripple" style="width:100%;margin-top:1rem;" onclick="window.open('https://voters.eci.gov.in/','_blank')" data-i18n="apply_btn">Apply Online at voters.eci.gov.in â†’</button>
           <p style="font-size:0.8rem;color:var(--text-secondary);margin-top:0.5rem;text-align:center;">Helpline: <strong>1950</strong></p>
         </div>
       </div>
 
       <!-- Voter's Code Reminder at bottom of Apply -->
       <div class="voters-code-reminder animate-on-scroll">
-        <span style="font-size:2rem;">🗳️</span>
+        <span style="font-size:2rem;">ðŸ—³ï¸</span>
         <div>
-          <h3>Now that you're registered — use your vote wisely.</h3>
+          <h3>Now that you're registered â€” use your vote wisely.</h3>
           <p style="color:var(--text-secondary);margin-top:0.25rem;">Every vote counts. Choose a candidate based on merit, not pressure.</p>
-          <a href="https://affidavit.eci.gov.in" target="_blank" style="font-size:0.85rem;color:var(--saffron);font-weight:600;margin-top:0.5rem;display:inline-block;">Check Candidate Affidavits at affidavit.eci.gov.in →</a>
+          <a href="https://affidavit.eci.gov.in" target="_blank" style="font-size:0.85rem;color:var(--saffron);font-weight:600;margin-top:0.5rem;display:inline-block;">Check Candidate Affidavits at affidavit.eci.gov.in â†’</a>
         </div>
       </div>
     </div>
@@ -393,108 +394,108 @@
       <div class="stepper-wrapper" id="stepperWrapper">
         <!-- Step 1 -->
         <div class="step-card">
-          <div class="step-icon">📋</div>
+          <div class="step-icon">ðŸ“‹</div>
           <div class="step-number-badge">Step 1 of 5</div>
           <h3 data-i18n="step1_title">Register Online</h3>
           <p data-i18n="step1_desc">Choose your category and fill the right form at <a href="https://voters.eci.gov.in" target="_blank" style="color:var(--saffron);font-weight:600;">voters.eci.gov.in</a></p>
           <!-- Voter category tabs -->
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;margin:1rem 0;">
             <div style="background:#FFF3E0;border:2px solid var(--saffron);border-radius:10px;padding:0.75rem;text-align:center;">
-              <div style="font-size:1.4rem;">🆕</div>
+              <div style="font-size:1.4rem;">ðŸ†•</div>
               <strong style="font-size:0.85rem;color:var(--navy);">New Indian Voter</strong>
               <div style="font-size:0.75rem;color:var(--text-secondary);margin-top:0.2rem;">Indian citizen, 18+, first time</div>
               <div style="background:var(--saffron);color:white;border-radius:6px;padding:0.2rem 0.5rem;font-size:0.75rem;font-weight:700;margin-top:0.4rem;display:inline-block;">Form 6</div>
             </div>
             <div style="background:#E8EAF6;border:2px solid var(--navy);border-radius:10px;padding:0.75rem;text-align:center;">
-              <div style="font-size:1.4rem;">✈️</div>
+              <div style="font-size:1.4rem;">âœˆï¸</div>
               <strong style="font-size:0.85rem;color:var(--navy);">NRI Voter</strong>
               <div style="font-size:0.75rem;color:var(--text-secondary);margin-top:0.2rem;">Indian citizen living abroad</div>
               <div style="background:var(--navy);color:white;border-radius:6px;padding:0.2rem 0.5rem;font-size:0.75rem;font-weight:700;margin-top:0.4rem;display:inline-block;">Form 6A</div>
             </div>
             <div style="background:#E8F5E9;border:2px solid var(--green);border-radius:10px;padding:0.75rem;text-align:center;">
-              <div style="font-size:1.4rem;">🏠</div>
+              <div style="font-size:1.4rem;">ðŸ </div>
               <strong style="font-size:0.85rem;color:var(--navy);">Changed Address</strong>
               <div style="font-size:0.75rem;color:var(--text-secondary);margin-top:0.2rem;">Shifted to a new constituency</div>
               <div style="background:var(--green);color:white;border-radius:6px;padding:0.2rem 0.5rem;font-size:0.75rem;font-weight:700;margin-top:0.4rem;display:inline-block;">Form 8A</div>
             </div>
             <div style="background:#F3E5F5;border:2px solid #6A1B9A;border-radius:10px;padding:0.75rem;text-align:center;">
-              <div style="font-size:1.4rem;">✏️</div>
+              <div style="font-size:1.4rem;">âœï¸</div>
               <strong style="font-size:0.85rem;color:var(--navy);">Fix My Details</strong>
               <div style="font-size:0.75rem;color:var(--text-secondary);margin-top:0.2rem;">Name, DOB, photo errors</div>
               <div style="background:#6A1B9A;color:white;border-radius:6px;padding:0.2rem 0.5rem;font-size:0.75rem;font-weight:700;margin-top:0.4rem;display:inline-block;">Form 8</div>
             </div>
           </div>
           <div class="step-info-box">
-            <p>📋 You need: Age proof + Address proof + Photo</p>
-            <p>⏱️ Takes about 10-15 minutes</p>
-            <p>💰 Completely free!</p>
+            <p>ðŸ“‹ You need: Age proof + Address proof + Photo</p>
+            <p>â±ï¸ Takes about 10-15 minutes</p>
+            <p>ðŸ’° Completely free!</p>
           </div>
-          <a href="https://voters.eci.gov.in" target="_blank" class="btn-primary ripple mt-4" style="display:inline-flex;">Go to voters.eci.gov.in →</a>
+          <a href="https://voters.eci.gov.in" target="_blank" class="btn-primary ripple mt-4" style="display:inline-flex;">Go to voters.eci.gov.in â†’</a>
         </div>
         <!-- Step 2 -->
         <div class="step-card">
-          <div class="step-icon">🔍</div>
+          <div class="step-icon">ðŸ”</div>
           <div class="step-number-badge">Step 2 of 5</div>
           <h3 data-i18n="step2_title">Verify Your Details</h3>
           <p data-i18n="step2_desc">Check SMS confirmation. Verify your name appears on the electoral roll.</p>
           <div class="step-info-box">
-            <p>📱 You'll receive an SMS after submission</p>
-            <p>🔎 Search your name on electoralsearch.eci.gov.in</p>
-            <p>⏳ Verification takes 2-4 weeks</p>
+            <p>ðŸ“± You'll receive an SMS after submission</p>
+            <p>ðŸ”Ž Search your name on electoralsearch.eci.gov.in</p>
+            <p>â³ Verification takes 2-4 weeks</p>
           </div>
-          <a href="https://electoralsearch.eci.gov.in" target="_blank" class="btn-primary ripple mt-4" style="display:inline-flex;">Check Electoral Roll →</a>
+          <a href="https://electoralsearch.eci.gov.in" target="_blank" class="btn-primary ripple mt-4" style="display:inline-flex;">Check Electoral Roll â†’</a>
         </div>
         <!-- Step 3 -->
         <div class="step-card">
-          <div class="step-icon">📥</div>
+          <div class="step-icon">ðŸ“¥</div>
           <div class="step-number-badge">Step 3 of 5</div>
           <h3 data-i18n="step3_title">Get Your Voter ID</h3>
           <p data-i18n="step3_desc">Download e-EPIC (digital Voter ID) from NVSP portal or receive physical card by post.</p>
           <div class="step-info-box">
-            <p>📱 e-EPIC = digital voter ID on your phone</p>
-            <p>📮 Physical card arrives by post in 4-6 weeks</p>
-            <p>✅ Both are equally valid at polling booth</p>
+            <p>ðŸ“± e-EPIC = digital voter ID on your phone</p>
+            <p>ðŸ“® Physical card arrives by post in 4-6 weeks</p>
+            <p>âœ… Both are equally valid at polling booth</p>
           </div>
-          <a href="https://nvsp.in" target="_blank" class="btn-primary ripple mt-4" style="display:inline-flex;">Download e-EPIC →</a>
+          <a href="https://nvsp.in" target="_blank" class="btn-primary ripple mt-4" style="display:inline-flex;">Download e-EPIC â†’</a>
         </div>
         <!-- Step 4 -->
         <div class="step-card">
-          <div class="step-icon">🗳️</div>
+          <div class="step-icon">ðŸ—³ï¸</div>
           <div class="step-number-badge">Step 4 of 5</div>
           <h3 data-i18n="step4_title">Know Your EVM & NOTA</h3>
-          <p data-i18n="step4_desc">The Electronic Voting Machine is simple — just press the button next to your candidate.</p>
+          <p data-i18n="step4_desc">The Electronic Voting Machine is simple â€” just press the button next to your candidate.</p>
           <div class="evm-explainer">
             <div class="evm-box">
-              <div class="evm-row"><div class="evm-candidate">Candidate A ✦ Party</div><div class="evm-btn-demo pulse-btn"></div></div>
-              <div class="evm-row"><div class="evm-candidate">Candidate B ✦ Party</div><div class="evm-btn-demo"></div></div>
-              <div class="evm-row nota-row"><div class="evm-candidate">🚫 NOTA</div><div class="evm-btn-demo nota-btn"></div></div>
+              <div class="evm-row"><div class="evm-candidate">Candidate A âœ¦ Party</div><div class="evm-btn-demo pulse-btn"></div></div>
+              <div class="evm-row"><div class="evm-candidate">Candidate B âœ¦ Party</div><div class="evm-btn-demo"></div></div>
+              <div class="evm-row nota-row"><div class="evm-candidate">ðŸš« NOTA</div><div class="evm-btn-demo nota-btn"></div></div>
             </div>
             <div class="evm-labels">
-              <p>🔵 Blue button = cast your vote</p>
-              <p>🔴 Red light + Beep = vote confirmed</p>
-              <p>🚫 NOTA = last button, reject all candidates</p>
+              <p>ðŸ”µ Blue button = cast your vote</p>
+              <p>ðŸ”´ Red light + Beep = vote confirmed</p>
+              <p>ðŸš« NOTA = last button, reject all candidates</p>
             </div>
           </div>
         </div>
         <!-- Step 5 -->
         <div class="step-card">
-          <div class="step-icon">✅</div>
+          <div class="step-icon">âœ…</div>
           <div class="step-number-badge">Step 5 of 5</div>
           <h3 data-i18n="step5_title">You're Ready!</h3>
           <p data-i18n="step5_desc">You're now a registered voter. Your vote is your voice. Use it wisely.</p>
           <!-- Voter's Code reminder at end of walkthrough -->
           <div class="voters-code-reminder" style="margin-top:1.5rem;">
-            <span style="font-size:2rem;">🗳️</span>
+            <span style="font-size:2rem;">ðŸ—³ï¸</span>
             <div>
               <h3>The Voter's Oath</h3>
               <p style="color:var(--text-secondary);margin-top:0.25rem;">Vote Sacred. Choose Wisely. Reject if Needed. Report Wrongs.</p>
-              <a href="https://affidavit.eci.gov.in" target="_blank" style="font-size:0.85rem;color:var(--saffron);font-weight:600;margin-top:0.5rem;display:inline-block;">Check Candidate Affidavits →</a>
+              <a href="https://affidavit.eci.gov.in" target="_blank" style="font-size:0.85rem;color:var(--saffron);font-weight:600;margin-top:0.5rem;display:inline-block;">Check Candidate Affidavits â†’</a>
             </div>
           </div>
           <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-top:1.5rem;">
-            <button class="btn-primary ripple" onclick="showPage('booth')">📍 Find My Booth</button>
-            <button class="btn-secondary ripple" onclick="showPage('more')">⏰ Set Reminder</button>
-            <button class="btn-secondary ripple" onclick="showPage('journey')">🗳️ Election Day Journey</button>
+            <button class="btn-primary ripple" onclick="showPage('booth')">ðŸ“ Find My Booth</button>
+            <button class="btn-secondary ripple" onclick="showPage('more')">â° Set Reminder</button>
+            <button class="btn-secondary ripple" onclick="showPage('journey')">ðŸ—³ï¸ Election Day Journey</button>
           </div>
         </div>
       </div>
@@ -502,8 +503,8 @@
 
     <!-- Stepper controls -->
     <div class="stepper-controls">
-      <button class="btn-secondary ripple" id="backStepBtn" style="display:none;">← Back</button>
-      <button class="btn-primary ripple" id="nextStepBtn">Next Step →</button>
+      <button class="btn-secondary ripple" id="backStepBtn" style="display:none;">â† Back</button>
+      <button class="btn-primary ripple" id="nextStepBtn">Next Step â†’</button>
     </div>
   </section>
 </div>
@@ -516,7 +517,7 @@
     <div class="timeline" id="electionTimeline">
       <div class="timeline-line-draw"></div>
       <div class="timeline-item animate-on-scroll">
-        <div class="timeline-icon" style="background:var(--saffron);color:white;">🌅</div>
+        <div class="timeline-icon" style="background:var(--saffron);color:white;">ðŸŒ…</div>
         <div class="timeline-content">
           <span class="timeline-time">7:00 AM</span>
           <h3 data-i18n="j1_title">Polling Booth Opens</h3>
@@ -524,46 +525,46 @@
         </div>
       </div>
       <div class="timeline-item animate-on-scroll">
-        <div class="timeline-icon">📋</div>
+        <div class="timeline-icon">ðŸ“‹</div>
         <div class="timeline-content">
           <span class="timeline-time">Arrive</span>
           <h3 data-i18n="j2_title">Find Your Name</h3>
           <p data-i18n="j2_desc">Officers check the electoral roll. Tell them your name and booth slip number.</p>
-          <a href="https://electoralsearch.eci.gov.in" target="_blank" style="font-size:0.8rem;color:var(--saffron);font-weight:600;">Find your name in advance →</a>
+          <a href="https://electoralsearch.eci.gov.in" target="_blank" style="font-size:0.8rem;color:var(--saffron);font-weight:600;">Find your name in advance â†’</a>
         </div>
       </div>
       <div class="timeline-item animate-on-scroll">
-        <div class="timeline-icon">🪪</div>
+        <div class="timeline-icon">ðŸªª</div>
         <div class="timeline-content">
           <span class="timeline-time">Queue</span>
           <h3 data-i18n="j3_title">Identity Check</h3>
           <p data-i18n="j3_desc">Show your Voter ID or any of the 12 ECI-approved alternate documents.</p>
-          <button onclick="showPage('ready')" style="font-size:0.8rem;color:var(--saffron);font-weight:600;background:none;border:none;cursor:pointer;padding:0;margin-top:0.25rem;">See all 12 valid documents →</button>
+          <button onclick="showPage('ready')" style="font-size:0.8rem;color:var(--saffron);font-weight:600;background:none;border:none;cursor:pointer;padding:0;margin-top:0.25rem;">See all 12 valid documents â†’</button>
         </div>
       </div>
       <div class="timeline-item animate-on-scroll">
-        <div class="timeline-icon">🖋️</div>
+        <div class="timeline-icon">ðŸ–‹ï¸</div>
         <div class="timeline-content">
           <span class="timeline-time">Inside</span>
           <h3 data-i18n="j4_title">Ink on Finger</h3>
-          <p data-i18n="j4_desc">Indelible ink is applied to your left index finger. This prevents double voting. Fades in 2-3 weeks — completely normal.</p>
+          <p data-i18n="j4_desc">Indelible ink is applied to your left index finger. This prevents double voting. Fades in 2-3 weeks â€” completely normal.</p>
         </div>
       </div>
       <div class="timeline-item animate-on-scroll" style="--highlight:1;">
-        <div class="timeline-icon" style="background:var(--saffron);color:white;">🗳️</div>
+        <div class="timeline-icon" style="background:var(--saffron);color:white;">ðŸ—³ï¸</div>
         <div class="timeline-content" style="border:2px solid var(--saffron);background:linear-gradient(135deg,#fff9f7,#fff);">
           <span class="timeline-time" style="background:var(--saffron);color:white;">Vote!</span>
           <h3 data-i18n="j5_title" style="color:var(--saffron);">Cast Your Vote on EVM</h3>
           <p data-i18n="j5_desc">Find your candidate's name and party symbol. Press the blue button next to it.</p>
           <div class="evm-demo-mini">
             <div class="evm-btn-animated"></div>
-            <span>← Press here next to your candidate</span>
+            <span>â† Press here next to your candidate</span>
           </div>
-          <p style="margin-top:0.75rem;font-weight:600;color:var(--green);">🔔 Heard a beep? Your vote is cast! ✅</p>
+          <p style="margin-top:0.75rem;font-weight:600;color:var(--green);">ðŸ”” Heard a beep? Your vote is cast! âœ…</p>
         </div>
       </div>
       <div class="timeline-item animate-on-scroll">
-        <div class="timeline-icon">📄</div>
+        <div class="timeline-icon">ðŸ“„</div>
         <div class="timeline-content">
           <span class="timeline-time">+7 sec</span>
           <h3 data-i18n="j6_title">VVPAT Confirms Your Vote</h3>
@@ -571,40 +572,40 @@
           <div class="vvpat-demo">
             <div class="vvpat-window">
               <div class="vvpat-slip-demo" id="vvpatDemo">
-                <span style="font-size:1.5rem;">🧾</span>
-                <p style="font-size:0.75rem;margin:0;">Candidate Name<br>Party Symbol ✦</p>
+                <span style="font-size:1.5rem;">ðŸ§¾</span>
+                <p style="font-size:0.75rem;margin:0;">Candidate Name<br>Party Symbol âœ¦</p>
               </div>
             </div>
             <div class="vvpat-bar-container"><div class="vvpat-bar" id="vvpatBar"></div></div>
             <p style="font-size:0.75rem;color:var(--text-secondary);text-align:center;">Visible for 7 seconds, then drops into sealed box</p>
           </div>
-          <button onclick="triggerVVPAT()" class="btn-secondary ripple mt-4" style="font-size:0.8rem;padding:0.4rem 0.8rem;">▶ See VVPAT Animation</button>
+          <button onclick="triggerVVPAT()" class="btn-secondary ripple mt-4" style="font-size:0.8rem;padding:0.4rem 0.8rem;">â–¶ See VVPAT Animation</button>
         </div>
       </div>
       <div class="timeline-item animate-on-scroll">
-        <div class="timeline-icon" style="background:#C62828;color:white;">🚫</div>
+        <div class="timeline-icon" style="background:#C62828;color:white;">ðŸš«</div>
         <div class="timeline-content">
           <span class="timeline-time">Option</span>
-          <h3 data-i18n="j7_title">NOTA — Your Right to Reject</h3>
+          <h3 data-i18n="j7_title">NOTA â€” Your Right to Reject</h3>
           <p>NOTA stands for <strong>None of the Above</strong>. It is the <strong>last button</strong> on every EVM in India.</p>
           <div style="background:var(--bg);padding:1rem;border-radius:var(--radius-md);margin-top:0.75rem;border-left:3px solid #C62828;">
-            <p>✅ If <strong>no candidate deserves your vote</strong>, press NOTA</p>
-            <p>✅ Your vote <strong>still counts</strong> as democratic participation</p>
-            <p>✅ NOTA was introduced by Supreme Court in <strong>2013</strong></p>
-            <p>✅ It <strong>cannot</strong> directly cause re-election but sends a strong message</p>
+            <p>âœ… If <strong>no candidate deserves your vote</strong>, press NOTA</p>
+            <p>âœ… Your vote <strong>still counts</strong> as democratic participation</p>
+            <p>âœ… NOTA was introduced by Supreme Court in <strong>2013</strong></p>
+            <p>âœ… It <strong>cannot</strong> directly cause re-election but sends a strong message</p>
           </div>
         </div>
       </div>
       <div class="timeline-item animate-on-scroll">
-        <div class="timeline-icon" style="background:var(--green);color:white;">✅</div>
+        <div class="timeline-icon" style="background:var(--green);color:white;">âœ…</div>
         <div class="timeline-content">
           <span class="timeline-time">Done!</span>
-          <h3 data-i18n="j8_title">You've Voted! 🎉</h3>
+          <h3 data-i18n="j8_title">You've Voted! ðŸŽ‰</h3>
           <p data-i18n="j8_desc">Congratulations! You've fulfilled your democratic duty.</p>
           <div id="confetti-container" class="confetti-container"></div>
           <div class="flex gap-2 mt-4" style="flex-wrap:wrap;">
-            <button class="btn-primary ripple" style="background:#25D366;" onclick="window.open('https://wa.me/?text='+encodeURIComponent('I voted today! 🗳️🇮🇳 Have you? Find your booth: electoralsearch.eci.gov.in | Register: voters.eci.gov.in'))">📱 Share on WhatsApp</button>
-            <button class="btn-secondary ripple" onclick="window.open('sms:?body='+encodeURIComponent('I voted today! 🗳️ Have you voted? Find your booth: electoralsearch.eci.gov.in'))">💬 Share via SMS</button>
+            <button class="btn-primary ripple" style="background:#25D366;" onclick="window.open('https://wa.me/?text='+encodeURIComponent('I voted today! ðŸ—³ï¸ðŸ‡®ðŸ‡³ Have you? Find your booth: electoralsearch.eci.gov.in | Register: voters.eci.gov.in'))">ðŸ“± Share on WhatsApp</button>
+            <button class="btn-secondary ripple" onclick="window.open('sms:?body='+encodeURIComponent('I voted today! ðŸ—³ï¸ Have you voted? Find your booth: electoralsearch.eci.gov.in'))">ðŸ’¬ Share via SMS</button>
           </div>
         </div>
       </div>
@@ -621,35 +622,35 @@
         <div>
           <div style="background:var(--bg);padding:1.5rem;border-radius:var(--radius-md);margin-bottom:1rem;">
             <input type="text" placeholder="Enter EPIC Number or Name..." style="width:100%;padding:0.75rem;border:1px solid #ccc;border-radius:var(--radius-sm);margin-bottom:1rem;font-family:var(--font-body);">
-            <button class="btn-primary ripple" style="width:100%;" onclick="document.getElementById('boothDetails').style.display='block'">🔍 Search</button>
-            <div class="text-center my-4" style="color:#999;">— OR —</div>
+            <button class="btn-primary ripple" style="width:100%;" onclick="document.getElementById('boothDetails').style.display='block'">ðŸ” Search</button>
+            <div class="text-center my-4" style="color:#999;">â€” OR â€”</div>
             <button id="locateBtn" class="btn-secondary ripple" style="width:100%;">
-              <span style="font-size:1rem;">📍</span>
+              <span style="font-size:1rem;">ðŸ“</span>
               <span data-i18n="booth_location">Use My Location</span>
             </button>
           </div>
           <div id="boothDetails" style="display:none;padding:1.5rem;border:2px solid var(--green);border-radius:var(--radius-md);background:white;">
             <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.75rem;">
-              <span style="background:var(--green);color:white;font-size:0.75rem;padding:0.25rem 0.5rem;border-radius:20px;font-weight:600;">✓ Confirmed Booth</span>
+              <span style="background:var(--green);color:white;font-size:0.75rem;padding:0.25rem 0.5rem;border-radius:20px;font-weight:600;">âœ“ Confirmed Booth</span>
             </div>
             <h3 style="color:var(--navy);">Govt. Higher Primary School</h3>
-            <p style="color:var(--text-secondary);margin-top:0.25rem;">Booth No. 142 • Part 45</p>
-            <p style="margin-top:0.5rem;"><span style="font-size:1rem;vertical-align:middle;">📍</span> Room No. 2, Ground Floor, 14th Cross, Malleshwaram, Bengaluru 560003</p>
-            <p style="margin-top:0.25rem;"><span style="font-size:1rem;vertical-align:middle;">🚶</span> 1.2 km away • ~15 min walk</p>
+            <p style="color:var(--text-secondary);margin-top:0.25rem;">Booth No. 142 â€¢ Part 45</p>
+            <p style="margin-top:0.5rem;"><span style="font-size:1rem;vertical-align:middle;">ðŸ“</span> Room No. 2, Ground Floor, 14th Cross, Malleshwaram, Bengaluru 560003</p>
+            <p style="margin-top:0.25rem;"><span style="font-size:1rem;vertical-align:middle;">ðŸš¶</span> 1.2 km away â€¢ ~15 min walk</p>
             <div style="display:flex;gap:0.75rem;margin-top:1rem;">
-              <button class="btn-primary ripple" style="flex:1;background:#25D366;" onclick="shareWhatsApp('Govt. Higher Primary School Booth 142','https://maps.google.com/?q=12.9716,77.5946')">📱 WhatsApp</button>
-              <button class="btn-secondary ripple" style="flex:1;border:2px solid var(--navy);color:var(--navy);" onclick="shareSMS('Govt. Higher Primary School Booth 142','https://maps.google.com/?q=12.9716,77.5946')">💬 SMS</button>
+              <button class="btn-primary ripple" style="flex:1;background:#25D366;" onclick="shareWhatsApp('Govt. Higher Primary School Booth 142','https://maps.google.com/?q=12.9716,77.5946')">ðŸ“± WhatsApp</button>
+              <button class="btn-secondary ripple" style="flex:1;border:2px solid var(--navy);color:var(--navy);" onclick="shareSMS('Govt. Higher Primary School Booth 142','https://maps.google.com/?q=12.9716,77.5946')">ðŸ’¬ SMS</button>
             </div>
             <p style="font-size:0.8rem;color:var(--text-secondary);margin-top:0.75rem;text-align:center;">Helpline: <strong>1950</strong> | <a href="https://electoralsearch.eci.gov.in" target="_blank">electoralsearch.eci.gov.in</a></p>
           </div>
           <div style="margin-top:1rem;padding:1rem;background:var(--bg);border-radius:var(--radius-md);border-left:3px solid var(--navy);">
-            <p style="font-size:0.85rem;">ℹ️ Bring your Voter ID (EPIC) and one valid photo ID to the polling station.</p>
+            <p style="font-size:0.85rem;">â„¹ï¸ Bring your Voter ID (EPIC) and one valid photo ID to the polling station.</p>
           </div>
         </div>
         <div>
           <div id="map" style="height:350px;border-radius:var(--radius-lg);"></div>
           <div style="text-align:center;margin-top:1rem;">
-            <a href="https://electoralsearch.eci.gov.in" target="_blank" class="btn-secondary ripple" style="display:inline-flex;font-size:0.85rem;">🔍 Search on electoralsearch.eci.gov.in →</a>
+            <a href="https://electoralsearch.eci.gov.in" target="_blank" class="btn-secondary ripple" style="display:inline-flex;font-size:0.85rem;">ðŸ” Search on electoralsearch.eci.gov.in â†’</a>
           </div>
         </div>
       </div>
@@ -673,7 +674,7 @@
     <!-- Set Reminder -->
     <h2 class="text-center mb-6" data-i18n="reminder_title">Set Reminder</h2>
     <div class="reminder-card animate-on-scroll" style="max-width:500px;margin:0 auto 3rem;">
-      <span style="font-size:3rem;display:block;text-align:center;margin-bottom:1rem;">📅</span>
+      <span style="font-size:3rem;display:block;text-align:center;margin-bottom:1rem;">ðŸ“…</span>
       <p style="color:var(--text-secondary);text-align:center;margin-bottom:1.5rem;" data-i18n="reminder_desc">Never miss election day.</p>
       <div class="reminder-inputs">
         <label style="font-weight:600;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.05em;">Election Date</label>
@@ -682,12 +683,12 @@
         <input type="time" id="reminderTime" value="08:00">
       </div>
       <button class="btn-primary ripple" style="width:100%;" onclick="createCalendarReminder()">
-        📅 <span data-i18n="reminder_btn_cal">Add to Google Calendar</span>
+        ðŸ“… <span data-i18n="reminder_btn_cal">Add to Google Calendar</span>
       </button>
       <button class="btn-secondary ripple mt-2" style="width:100%;" onclick="setNativeReminder()">
-        🔔 Set Device Reminder
+        ðŸ”” Set Device Reminder
       </button>
-      <p style="font-size:0.75rem;color:var(--green);text-align:center;margin-top:1rem;">🔒 Your data stays on your device. We store nothing.</p>
+      <p style="font-size:0.75rem;color:var(--green);text-align:center;margin-top:1rem;">ðŸ”’ Your data stays on your device. We store nothing.</p>
     </div>
 
     <!-- Report a Violation -->
@@ -695,23 +696,23 @@
     <p class="text-center mb-6" style="color:var(--text-secondary);" data-i18n="report_desc">Model Code of Conduct violations threaten the integrity of our elections.</p>
     <div style="max-width:800px;margin:0 auto 3rem;">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem;">
-        <div class="card text-center animate-on-scroll"><div style="font-size:2rem;">🚫💰</div><p style="font-weight:600;margin-top:0.5rem;">Bribery & Gifts</p></div>
-        <div class="card text-center animate-on-scroll"><div style="font-size:2rem;">🚫📢</div><p style="font-weight:600;margin-top:0.5rem;">Hate Speech</p></div>
-        <div class="card text-center animate-on-scroll"><div style="font-size:2rem;">🚫🏛️</div><p style="font-weight:600;margin-top:0.5rem;">Booth Capturing</p></div>
-        <div class="card text-center animate-on-scroll"><div style="font-size:2rem;">🚫📌</div><p style="font-weight:600;margin-top:0.5rem;">Illegal Campaigning</p></div>
+        <div class="card text-center animate-on-scroll"><div style="font-size:2rem;">ðŸš«ðŸ’°</div><p style="font-weight:600;margin-top:0.5rem;">Bribery & Gifts</p></div>
+        <div class="card text-center animate-on-scroll"><div style="font-size:2rem;">ðŸš«ðŸ“¢</div><p style="font-weight:600;margin-top:0.5rem;">Hate Speech</p></div>
+        <div class="card text-center animate-on-scroll"><div style="font-size:2rem;">ðŸš«ðŸ›ï¸</div><p style="font-weight:600;margin-top:0.5rem;">Booth Capturing</p></div>
+        <div class="card text-center animate-on-scroll"><div style="font-size:2rem;">ðŸš«ðŸ“Œ</div><p style="font-weight:600;margin-top:0.5rem;">Illegal Campaigning</p></div>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
         <div class="card animate-on-scroll">
-          <h3 style="display:flex;align-items:center;gap:0.5rem;">📱 cVIGIL App</h3>
+          <h3 style="display:flex;align-items:center;gap:0.5rem;">ðŸ“± cVIGIL App</h3>
           <p style="color:var(--text-secondary);margin:0.75rem 0;font-size:0.9rem;">Upload photo/video evidence. Officials respond within 100 minutes. Your report is confidential.</p>
-          <button class="btn-primary ripple" style="width:100%;margin-bottom:0.5rem;" onclick="window.open('https://play.google.com/store/apps/details?id=in.nic.eci.cvigil','_blank')">📲 Get on Play Store</button>
-          <button class="btn-secondary ripple" style="width:100%;" onclick="window.open('https://apps.apple.com/in/app/cvigil/id1447560069','_blank')">📲 Get on App Store</button>
+          <button class="btn-primary ripple" style="width:100%;margin-bottom:0.5rem;" onclick="window.open('https://play.google.com/store/apps/details?id=in.nic.eci.cvigil','_blank')">ðŸ“² Get on Play Store</button>
+          <button class="btn-secondary ripple" style="width:100%;" onclick="window.open('https://apps.apple.com/in/app/cvigil/id1447560069','_blank')">ðŸ“² Get on App Store</button>
         </div>
         <div class="card animate-on-scroll" style="background:var(--navy);color:white;text-align:center;">
-          <h3 style="color:white;display:flex;align-items:center;gap:0.5rem;justify-content:center;">📞 Call 1950</h3>
+          <h3 style="color:white;display:flex;align-items:center;gap:0.5rem;justify-content:center;">ðŸ“ž Call 1950</h3>
           <p style="font-size:3rem;font-weight:bold;color:var(--saffron);margin:1rem 0;">1950</p>
           <p style="color:rgba(255,255,255,0.8);font-size:0.85rem;margin-bottom:1rem;">Available in multiple languages, 24/7 during elections</p>
-          <a href="tel:1950" class="btn-primary ripple" style="display:inline-flex;background:var(--saffron);">📞 Dial 1950 Now</a>
+          <a href="tel:1950" class="btn-primary ripple" style="display:inline-flex;background:var(--saffron);">ðŸ“ž Dial 1950 Now</a>
         </div>
       </div>
     </div>
@@ -720,28 +721,28 @@
     <h2 class="text-center mb-6" data-i18n="nav_helplines">Helplines & Resources</h2>
     <div class="helplines-grid" style="max-width:900px;margin:0 auto;">
       <div class="card helpline-card animate-on-scroll">
-        <div class="helpline-icon">📞</div>
+        <div class="helpline-icon">ðŸ“ž</div>
         <div><h3>1950</h3><p style="color:var(--text-secondary);">National Voter Helpline</p><a href="tel:1950" class="btn-primary ripple mt-2" style="display:inline-flex;font-size:0.8rem;padding:0.4rem 1rem;">Call Now</a></div>
       </div>
       <div class="card helpline-card animate-on-scroll">
-        <div class="helpline-icon">🌐</div>
-        <div><h3>voters.eci.gov.in</h3><p style="color:var(--text-secondary);">Voter Registration Portal</p><a href="https://voters.eci.gov.in" target="_blank" class="btn-secondary ripple mt-2" style="display:inline-flex;font-size:0.8rem;padding:0.4rem 1rem;">Visit →</a></div>
+        <div class="helpline-icon">ðŸŒ</div>
+        <div><h3>voters.eci.gov.in</h3><p style="color:var(--text-secondary);">Voter Registration Portal</p><a href="https://voters.eci.gov.in" target="_blank" class="btn-secondary ripple mt-2" style="display:inline-flex;font-size:0.8rem;padding:0.4rem 1rem;">Visit â†’</a></div>
       </div>
       <div class="card helpline-card animate-on-scroll">
-        <div class="helpline-icon">🔍</div>
-        <div><h3>electoralsearch.eci.gov.in</h3><p style="color:var(--text-secondary);">Find your name on voter list</p><a href="https://electoralsearch.eci.gov.in" target="_blank" class="btn-secondary ripple mt-2" style="display:inline-flex;font-size:0.8rem;padding:0.4rem 1rem;">Search →</a></div>
+        <div class="helpline-icon">ðŸ”</div>
+        <div><h3>electoralsearch.eci.gov.in</h3><p style="color:var(--text-secondary);">Find your name on voter list</p><a href="https://electoralsearch.eci.gov.in" target="_blank" class="btn-secondary ripple mt-2" style="display:inline-flex;font-size:0.8rem;padding:0.4rem 1rem;">Search â†’</a></div>
       </div>
       <div class="card helpline-card animate-on-scroll">
-        <div class="helpline-icon">📄</div>
-        <div><h3>affidavit.eci.gov.in</h3><p style="color:var(--text-secondary);">Check candidate backgrounds</p><a href="https://affidavit.eci.gov.in" target="_blank" class="btn-secondary ripple mt-2" style="display:inline-flex;font-size:0.8rem;padding:0.4rem 1rem;">View →</a></div>
+        <div class="helpline-icon">ðŸ“„</div>
+        <div><h3>affidavit.eci.gov.in</h3><p style="color:var(--text-secondary);">Check candidate backgrounds</p><a href="https://affidavit.eci.gov.in" target="_blank" class="btn-secondary ripple mt-2" style="display:inline-flex;font-size:0.8rem;padding:0.4rem 1rem;">View â†’</a></div>
       </div>
       <div class="card helpline-card animate-on-scroll">
-        <div class="helpline-icon">📱</div>
-        <div><h3>cVIGIL App</h3><p style="color:var(--text-secondary);">Report MCC violations</p><a href="https://play.google.com/store/apps/details?id=in.nic.eci.cvigil" target="_blank" class="btn-secondary ripple mt-2" style="display:inline-flex;font-size:0.8rem;padding:0.4rem 1rem;">Download →</a></div>
+        <div class="helpline-icon">ðŸ“±</div>
+        <div><h3>cVIGIL App</h3><p style="color:var(--text-secondary);">Report MCC violations</p><a href="https://play.google.com/store/apps/details?id=in.nic.eci.cvigil" target="_blank" class="btn-secondary ripple mt-2" style="display:inline-flex;font-size:0.8rem;padding:0.4rem 1rem;">Download â†’</a></div>
       </div>
       <div class="card helpline-card animate-on-scroll">
-        <div class="helpline-icon">🏛️</div>
-        <div><h3>eci.gov.in</h3><p style="color:var(--text-secondary);">Election Commission of India</p><a href="https://eci.gov.in" target="_blank" class="btn-secondary ripple mt-2" style="display:inline-flex;font-size:0.8rem;padding:0.4rem 1rem;">Visit →</a></div>
+        <div class="helpline-icon">ðŸ›ï¸</div>
+        <div><h3>eci.gov.in</h3><p style="color:var(--text-secondary);">Election Commission of India</p><a href="https://eci.gov.in" target="_blank" class="btn-secondary ripple mt-2" style="display:inline-flex;font-size:0.8rem;padding:0.4rem 1rem;">Visit â†’</a></div>
       </div>
     </div>
   </section>
@@ -749,17 +750,24 @@
   <!-- Footer -->
   <footer style="background:var(--navy);color:white;padding:2rem;text-align:center;margin-top:3rem;">
     <p style="font-family:var(--font-display);font-size:1.5rem;margin-bottom:0.5rem;">MATADAN</p>
-    <p style="opacity:0.7;font-size:0.85rem;">Voter Helpline: 1950 | © Matadan Civic Education</p>
+    <p style="opacity:0.7;font-size:0.85rem;">Voter Helpline: 1950 | Â© Matadan Civic Education</p>
     <div class="ashoka-watermark" style="opacity:0.05;position:absolute;"></div>
     <p style="opacity:0.5;font-size:0.75rem;margin-top:1rem;">For educational purposes only. Always refer to official Election Commission of India guidelines.</p>
   </footer>
+</div>
+
+<!-- Share FAB -->
+<div style="position:fixed;bottom:110px;right:30px;z-index:1001;" id="shareFabWrapper">
+  <button onclick="shareMatadan()" aria-label="Share Matadan" title="Share with friends" style="width:48px;height:48px;background:#2E7D32;color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;box-shadow:0 4px 16px rgba(46,125,50,0.4);transition:all 0.2s;border:none;cursor:pointer;">
+    ðŸ“¤
+  </button>
 </div>
 
 <!-- ===================== FLOATING CHATBOT ===================== -->
 <div class="chat-fab-wrapper">
   <div class="chat-fab-label" id="chatFabLabel">Chat with me for help!</div>
   <button class="chat-fab ripple" onclick="toggleChat()" aria-label="Open Matadan AI chat assistant">
-    <span style="font-size:1.6rem;">🤖</span>
+    <span style="font-size:1.6rem;">ðŸ¤–</span>
   </button>
 </div>
 
@@ -767,52 +775,55 @@
 <div class="chat-drawer" id="chatDrawer">
   <div class="chat-header">
     <div class="flex items-center gap-2">
-      <span style="font-size:1.3rem;">🤖</span>
+      <span style="font-size:1.3rem;">ðŸ¤–</span>
       <strong>Matadan AI</strong>
       <span style="width:8px;height:8px;background:#4CAF50;border-radius:50%;display:inline-block;"></span>
     </div>
     <div style="display:flex;gap:0.5rem;align-items:center;">
-      <button id="expandChatBtn" onclick="expandChat()" aria-label="Expand chat" style="color:white;font-size:1.1rem;background:rgba(255,255,255,0.15);border-radius:6px;padding:0.25rem 0.5rem;line-height:1;cursor:pointer;" title="Expand">⛶</button>
+      <button id="expandChatBtn" onclick="expandChat()" aria-label="Expand chat" style="color:white;font-size:1.1rem;background:rgba(255,255,255,0.15);border-radius:6px;padding:0.25rem 0.5rem;line-height:1;cursor:pointer;" title="Expand">â›¶</button>
       <button class="close-btn" onclick="toggleChat()" aria-label="Close chat">
-        <span style="font-size:1.3rem;">✕</span>
+        <span style="font-size:1.3rem;">âœ•</span>
       </button>
     </div>
   </div>
   <div class="chat-messages" id="chatMessages" role="log" aria-live="polite" aria-label="Chat messages"></div>
   <div class="preloaded-questions" id="preloadedQuestionsContainer"></div>
   <div class="chat-input-area">
+    <button id="micBtn" onclick="toggleVoiceInput()" aria-label="Voice input" title="Speak your question" style="min-width:44px;height:44px;border-radius:50%;background:var(--bg);border:2px solid var(--navy);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;transition:all 0.2s;">
+      ðŸŽ¤
+    </button>
     <input type="text" id="chatInput" placeholder="Ask about voting..." autocomplete="off" aria-label="Type your question">
     <button class="btn-primary ripple" style="min-width:unset;padding:0.75rem;" onclick="sendChatMessage()" aria-label="Send message">
-      <span style="font-size:1.2rem;">➤</span>
+      <span style="font-size:1.2rem;">âž¤</span>
     </button>
   </div>
 </div>
 
 <!-- ===================== MOBILE TAB BAR ===================== -->
 <nav class="mobile-tabs" role="navigation" aria-label="Main navigation">
-  <button class="active" data-page="home" onclick="showPage('home')">
+  <button class="active" data-page="home" onclick="showPage('home')" aria-label="Navigate to Home">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
     <span data-i18n="nav_home">Home</span>
   </button>
-  <button data-page="ready" onclick="showPage('ready')">
+  <button data-page="ready" onclick="showPage('ready')" aria-label="Check Readiness">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
     <span>Ready?</span>
   </button>
-  <button data-page="booth" onclick="showPage('booth')">
+  <button data-page="booth" onclick="showPage('booth')" aria-label="Navigate to Booth Locator">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
     <span>Booth</span>
   </button>
-  <button data-page="journey" onclick="showPage('journey')">
+  <button data-page="journey" onclick="showPage('journey')" aria-label="View Election Journey">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
     <span>Journey</span>
   </button>
-  <button data-page="more" onclick="showPage('more')">
+  <button data-page="more" onclick="showPage('more')" aria-label="More Options">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     <span>More</span>
   </button>
 </nav>
 
-<!-- Scripts — deferred for performance -->
+<!-- Scripts â€” deferred for performance -->
 <script src="js/data.js?v=2" defer></script>
 <script src="js/chatbot.js?v=2" defer></script>
 <script src="js/animations.js?v=2" defer></script>
@@ -824,8 +835,9 @@
 <noscript>
   <style>.page-section { display: block !important; }</style>
   <div style="background:#E8531A;color:white;text-align:center;padding:1rem;font-family:sans-serif;">
-    ⚠️ Matadan works best with JavaScript enabled. Please enable it in your browser for the full experience.
+    âš ï¸ Matadan works best with JavaScript enabled. Please enable it in your browser for the full experience.
   </div>
 </noscript>
 </body>
 </html>
+

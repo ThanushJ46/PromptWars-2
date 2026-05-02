@@ -303,3 +303,157 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(initChatbotPopups, 2000);
     renderPreloadedQuestions();
 });
+
+// ── VOICE INPUT (Speech Recognition) ────────────────────────────
+
+let recognition = null;
+let isListening = false;
+
+const VOICE_LANG_MAP = {
+  en: 'en-IN',
+  hi: 'hi-IN',
+  kn: 'kn-IN'
+};
+
+function toggleVoiceInput() {
+  if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+    if (typeof showToast === 'function') showToast('Voice input not supported in this browser. Try Chrome.');
+    return;
+  }
+  if (isListening) { stopVoiceInput(); return; }
+  startVoiceInput();
+}
+
+function startVoiceInput() {
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  recognition = new SpeechRecognition();
+  recognition.lang = VOICE_LANG_MAP[currentLang] || 'en-IN';
+  recognition.continuous = false;
+  recognition.interimResults = true;
+  recognition.maxAlternatives = 1;
+
+  const micBtn = document.getElementById('micBtn');
+  const chatInput = document.getElementById('chatInput');
+  const msgs = document.getElementById('chatMessages');
+
+  recognition.onstart = () => {
+    isListening = true;
+    micBtn.classList.add('listening');
+    micBtn.innerHTML = '🔴';
+    micBtn.title = 'Tap to stop';
+    const wave = document.createElement('div');
+    wave.className = 'voice-wave';
+    wave.id = 'voiceWave';
+    wave.innerHTML = '<span></span><span></span><span></span><span></span><span></span>';
+    msgs.appendChild(wave);
+    msgs.scrollTop = msgs.scrollHeight;
+  };
+
+  recognition.onresult = (event) => {
+    const transcript = Array.from(event.results).map(r => r[0].transcript).join('');
+    chatInput.value = transcript;
+  };
+
+  recognition.onend = () => {
+    stopVoiceInput();
+    const text = chatInput.value.trim();
+    if (text) setTimeout(() => sendChatMessage(), 300);
+  };
+
+  recognition.onerror = (event) => {
+    stopVoiceInput();
+    if (event.error === 'not-allowed') {
+      if (typeof showToast === 'function') showToast('❌ Microphone permission denied. Please allow mic access.');
+    } else if (event.error === 'no-speech') {
+      if (typeof showToast === 'function') showToast('No speech detected. Please try again.');
+    } else {
+      if (typeof showToast === 'function') showToast('Voice error: ' + event.error);
+    }
+  };
+
+  recognition.start();
+}
+
+function stopVoiceInput() {
+  isListening = false;
+  const micBtn = document.getElementById('micBtn');
+  if (micBtn) {
+    micBtn.classList.remove('listening');
+    micBtn.innerHTML = '🎤';
+    micBtn.title = 'Speak your question';
+  }
+  const wave = document.getElementById('voiceWave');
+  if (wave) wave.remove();
+  if (recognition) {
+    try { recognition.stop(); } catch(e) {}
+    recognition = null;
+  }
+}
+
+// ── TEXT TO SPEECH (Read Answer Aloud) ──────────────────────────
+
+let currentUtterance = null;
+
+function speakText(text, buttonEl) {
+  if (!('speechSynthesis' in window)) {
+    if (typeof showToast === 'function') showToast('Text-to-speech not supported in this browser.');
+    return;
+  }
+  if (currentUtterance) {
+    window.speechSynthesis.cancel();
+    currentUtterance = null;
+    document.querySelectorAll('.tts-btn').forEach(btn => {
+      btn.classList.remove('speaking');
+      btn.innerHTML = '🔊 Listen';
+    });
+    return;
+  }
+  const cleanText = text
+    .replace(/\*\*(.*?)\*\*/g, '$1')
+    .replace(/[\u{1F000}-\u{1FFFF}]/gu, '')
+    .replace(/→/g, '').trim();
+
+  const utterance = new SpeechSynthesisUtterance(cleanText);
+  const langMap = { en: 'en-IN', hi: 'hi-IN', kn: 'kn-IN' };
+  utterance.lang = langMap[currentLang] || 'en-IN';
+  utterance.rate = 0.9;
+  utterance.pitch = 1;
+  utterance.volume = 1;
+
+  utterance.onstart = () => {
+    if (buttonEl) { buttonEl.classList.add('speaking'); buttonEl.innerHTML = '⏹ Stop'; }
+  };
+  utterance.onend = () => {
+    currentUtterance = null;
+    if (buttonEl) { buttonEl.classList.remove('speaking'); buttonEl.innerHTML = '🔊 Listen'; }
+  };
+  utterance.onerror = () => {
+    currentUtterance = null;
+    if (buttonEl) { buttonEl.classList.remove('speaking'); buttonEl.innerHTML = '🔊 Listen'; }
+  };
+
+  currentUtterance = utterance;
+  window.speechSynthesis.speak(utterance);
+}
+
+// ── OVERRIDE appendMessage to add TTS button on bot replies ──────
+
+window.appendMessage = function(sender, text) {
+  const msgs = document.getElementById('chatMessages');
+  const div = document.createElement('div');
+  div.className = `chat-message ${sender}`;
+  let formatted = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
+  // XSS safety: only allow safe tags we just created
+  div.innerHTML = formatted;
+  if (sender === 'bot') {
+    const ttsBtn = document.createElement('button');
+    ttsBtn.className = 'tts-btn';
+    ttsBtn.innerHTML = '🔊 Listen';
+    ttsBtn.setAttribute('aria-label', 'Listen to this answer');
+    ttsBtn.onclick = function() { speakText(text, this); };
+    div.appendChild(document.createElement('br'));
+    div.appendChild(ttsBtn);
+  }
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+};

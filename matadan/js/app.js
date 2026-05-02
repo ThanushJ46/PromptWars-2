@@ -190,3 +190,33 @@ function triggerVVPAT() {
     bar.classList.remove('counting');
   }, 9000);
 }
+
+// ── WEB SHARE API ────────────────────────────────────────────────
+async function shareMatadan() {
+  const shareData = {
+    title: 'Matadan — India\'s Election Education Platform',
+    text: '🗳️ Are you ready to vote? Check your documents, find your booth, and learn how the EVM works — in English, Hindi & Kannada. Works offline too!\n\nVoter Helpline: 1950',
+    url: 'https://matadan-175321574215.asia-south1.run.app'
+  };
+
+  try {
+    if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
+      await navigator.share(shareData);
+      if (typeof showToast === 'function') showToast('✅ Thanks for sharing Matadan!');
+    } else {
+      // Fallback — WhatsApp direct link
+      const whatsappText = encodeURIComponent(
+        `🗳️ *Matadan — India's Election Education Platform*\n\nAre you ready to vote? Check your documents, find your booth, learn how EVM works — in English, Hindi & Kannada. Works offline!\n\n👉 ${shareData.url}\n\nVoter Helpline: 1950`
+      );
+      window.open(`https://wa.me/?text=${whatsappText}`, '_blank');
+    }
+  } catch (err) {
+    if (err.name !== 'AbortError') {
+      // User didn't cancel — show WhatsApp fallback
+      const whatsappText = encodeURIComponent(
+        `🗳️ Matadan — India's Election Education Platform\n${shareData.url}`
+      );
+      window.open(`https://wa.me/?text=${whatsappText}`, '_blank');
+    }
+  }
+}
