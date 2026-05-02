@@ -10,11 +10,6 @@
   /* Adjust padding for mobile tabs */
   body { padding-bottom: 72px; }
 
-  /* Move share FAB up on mobile to avoid tab bar and chat FAB */
-  #shareFabWrapper {
-    bottom: 164px !important;
-    right: 24px !important;
-  }
 
   /* Navbar: compact on mobile */
   .navbar { padding: 0.75rem 1rem; }
