@@ -1,7 +1,7 @@
 // sw.js — Matadan Service Worker
 // Handles offline caching and AI fallback
 
-const CACHE_VERSION = 'matadan-v3';
+const CACHE_VERSION = 'matadan-v4';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const DYNAMIC_CACHE = `${CACHE_VERSION}-dynamic`;
 
